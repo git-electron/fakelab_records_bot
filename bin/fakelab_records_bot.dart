@@ -1,15 +1,22 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
 
-const telegramApiKey = '7773023725:AAHsNSD2rSv28HzLQj1D509oip221fAmULg';
+import 'package:dotenv/dotenv.dart';
 
 Future<void> main() async {
-  final telegram = Telegram(telegramApiKey);
+  var env = DotEnv()..load();
+
+  final String? apiToken = env['API_TOKEN'];
+
+  if (apiToken == null) exit(0);
+
+  final telegram = Telegram(apiToken);
   final event = Event((await telegram.getMe()).username!);
-  final teledart = TeleDart(telegramApiKey, event);
+  final teledart = TeleDart(apiToken, event);
 
   teledart.start();
 
