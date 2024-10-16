@@ -1,23 +1,23 @@
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_mix_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order_mix/domain/on_callback_order_mix.dart';
+import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_beat_markup.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order_beat/domain/on_callback_order_beat.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 
-@Singleton(as: OnCallbackOrderMix)
-class OnCallbackOrderMixImpl implements OnCallbackOrderMix {
+@Singleton(as: OnCallbackOrderBeat)
+class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
   final Logger logger;
   final TeleDart teledart;
   final Translations translations;
-  final OrderMixMarkup orderMixMarkup;
+  final OrderBeatMarkup orderBeatMarkup;
 
-  OnCallbackOrderMixImpl({
+  OnCallbackOrderBeatImpl({
     required this.logger,
     required this.teledart,
     required this.translations,
-    required this.orderMixMarkup,
+    required this.orderBeatMarkup,
   });
 
   @override
@@ -30,11 +30,11 @@ class OnCallbackOrderMixImpl implements OnCallbackOrderMix {
 
     teledart.answerCallbackQuery(callback.id);
     teledart.editMessageText(
-      translations.texts.order_mix_text,
+      translations.texts.order_beat_text,
       chatId: chat.id,
       messageId: message.messageId,
       parseMode: 'Markdown',
-      replyMarkup: orderMixMarkup(),
+      replyMarkup: orderBeatMarkup(),
     );
   }
 }
