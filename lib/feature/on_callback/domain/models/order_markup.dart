@@ -32,7 +32,7 @@ class OrderMarkup {
     );
     final InlineKeyboardButton goBack = InlineKeyboardButton(
       text: translations.buttons.go_back,
-      callbackData: 'go_back?to=main_menu',
+      callbackData: 'go_to:main_menu',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [

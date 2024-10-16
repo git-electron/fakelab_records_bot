@@ -1,5 +1,5 @@
 import 'package:teledart/model.dart';
 
-abstract class OnCallbackGoBack {
+abstract class OnCallbackGoTo {
   void call(TeleDartCallbackQuery callback);
 }

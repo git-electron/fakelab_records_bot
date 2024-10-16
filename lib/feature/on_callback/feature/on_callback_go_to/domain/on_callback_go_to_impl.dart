@@ -1,19 +1,19 @@
 import 'package:fakelab_records_bot/feature/on_callback/domain/models/main_menu_markup.dart';
 import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_go_back/domain/on_callback_go_back.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_go_to/domain/on_callback_go_to.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 
-@Singleton(as: OnCallbackGoBack)
-class OnCallbackGoBackImpl implements OnCallbackGoBack {
+@Singleton(as: OnCallbackGoTo)
+class OnCallbackGoToImpl implements OnCallbackGoTo {
   final Logger logger;
   final TeleDart teledart;
   final OrderMarkup orderMarkup;
   final MainMenuMarkup mainMenuMarkup;
 
-  OnCallbackGoBackImpl({
+  OnCallbackGoToImpl({
     required this.logger,
     required this.teledart,
     required this.orderMarkup,
@@ -23,7 +23,7 @@ class OnCallbackGoBackImpl implements OnCallbackGoBack {
   @override
   void call(TeleDartCallbackQuery callback) {
     final Message? message = callback.message;
-    final String? to = callback.data?.split('?to=').last;
+    final String? to = callback.data?.split(':').last;
 
     if (message == null || to == null) return;
 
