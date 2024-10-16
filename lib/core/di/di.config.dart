@@ -9,6 +9,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:fakelab_records_bot/core/di/register_module.dart' as _i935;
+import 'package:firebase_dart/core.dart' as _i1003;
+import 'package:firebase_dart/database.dart' as _i493;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:logger/logger.dart' as _i974;
@@ -34,6 +36,11 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.singleton<_i2.TeleDart>(() => registerModule.teledart);
+    await gh.singletonAsync<_i1003.FirebaseApp>(
+      () => registerModule.app,
+      preResolve: true,
+    );
+    gh.singleton<_i493.FirebaseDatabase>(() => registerModule.database);
     return this;
   }
 }
