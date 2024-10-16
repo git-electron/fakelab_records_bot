@@ -8,18 +8,17 @@ import 'get_user_repository.dart';
 @Singleton(as: GetUserRepository)
 class GetUserRepositoryImpl implements GetUserRepository {
   final Logger logger;
-  final FirebaseDatabase database;
+  final DatabaseReference reference;
 
   GetUserRepositoryImpl({
     required this.logger,
-    required this.database,
+    required this.reference,
   });
 
   @override
   Future<User?> call(int userId) async {
     final String path = 'users/$userId';
-    final Map<String, dynamic>? data =
-        await database.reference().child(path).get();
+    final Map<String, dynamic>? data = await reference.child(path).get();
 
     logger.i('''Realtime Database request:
 Path: $path

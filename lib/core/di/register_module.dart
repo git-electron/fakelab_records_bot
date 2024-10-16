@@ -60,5 +60,5 @@ abstract class RegisterModule {
       injector<db.FirebaseDatabase>().reference();
 
   @singleton
-  Translations get t => AppLocale.ru.build();
+  Translations get translations => AppLocale.ru.build();
 }

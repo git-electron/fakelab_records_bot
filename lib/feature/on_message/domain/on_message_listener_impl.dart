@@ -18,7 +18,7 @@ class OnMessageListenerImpl implements OnMessageListener {
   void call(TeleDartMessage message) {
     if (message.contact != null) {
       final Contact contact = message.contact!;
-      onContactReceived(contact);
+      onContactReceived(message, contact: contact);
     }
   }
 }

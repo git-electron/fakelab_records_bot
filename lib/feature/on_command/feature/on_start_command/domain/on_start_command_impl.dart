@@ -39,7 +39,7 @@ class OnStartCommandImpl implements OnStartCommand {
     teledart.sendMessage(
       message.chat.id,
       translations.texts.start_command_text_unregistered(
-        firstName: message.from?.firstName ?? t.user,
+        firstName: message.from?.firstName ?? translations.user,
       ),
       parseMode: 'Markdown',
       replyMarkup: _replyMarkupUnregistered,
@@ -59,7 +59,7 @@ class OnStartCommandImpl implements OnStartCommand {
     final ReplyKeyboardMarkup markup = ReplyKeyboardMarkup(
       keyboard: keyboard,
       resizeKeyboard: true,
-      isPersistent: false,
+      oneTimeKeyboard: true,
     );
 
     return markup;
@@ -69,7 +69,7 @@ class OnStartCommandImpl implements OnStartCommand {
     teledart.sendMessage(
       message.chat.id,
       translations.texts.start_command_text_registered(
-        firstName: message.from?.firstName ?? t.user,
+        firstName: message.from?.firstName ?? translations.user,
       ),
       parseMode: 'Markdown',
       replyMarkup: _replyMarkupRegistered,

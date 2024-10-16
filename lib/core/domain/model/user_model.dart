@@ -7,9 +7,9 @@ part 'user_model.g.dart';
 class User with _$User {
   factory User({
     required int id,
-    required String username,
     required String firstName,
-    required String lastName,
+    required String? lastName,
+    required String? username,
     required String phoneNumber,
   }) = _User;
 
