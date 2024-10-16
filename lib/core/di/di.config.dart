@@ -9,10 +9,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:fakelab_records_bot/core/di/register_module.dart' as _i935;
+import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart' as _i74;
 import 'package:fakelab_records_bot/feature/on_command/domain/on_command_listener.dart'
     as _i947;
 import 'package:fakelab_records_bot/feature/on_command/domain/on_command_listener_impl.dart'
     as _i599;
+import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/data/repository/user_repository.dart'
+    as _i171;
+import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/data/repository/user_repository_impl.dart'
+    as _i378;
+import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/domain/on_start_command.dart'
+    as _i734;
+import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/domain/on_start_command_impl.dart'
+    as _i485;
 import 'package:fakelab_records_bot/feature/on_inline/domain/on_inline_listener.dart'
     as _i648;
 import 'package:fakelab_records_bot/feature/on_inline/domain/on_inline_listener_impl.dart'
@@ -53,12 +62,21 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.singleton<_i493.FirebaseDatabase>(() => registerModule.database);
+    gh.singleton<_i74.Translations>(() => registerModule.t);
+    gh.singleton<_i171.UserRepository>(() => _i378.UserRepositoryImpl(
+          logger: gh<_i974.Logger>(),
+          database: gh<_i493.FirebaseDatabase>(),
+        ));
     gh.singleton<_i947.OnCommandListener>(
         () => _i599.OnCommandListenerImpl(logger: gh<_i974.Logger>()));
     gh.singleton<_i73.OnMessageListener>(
         () => _i330.OnMessageListenerImpl(logger: gh<_i974.Logger>()));
     gh.singleton<_i648.OnInlineListener>(
         () => _i714.OnInlineListenerImpl(logger: gh<_i974.Logger>()));
+    gh.singleton<_i734.OnStartCommand>(() => _i485.OnStartCommandImpl(
+          logger: gh<_i974.Logger>(),
+          teledart: gh<_i2.TeleDart>(),
+        ));
     return this;
   }
 }

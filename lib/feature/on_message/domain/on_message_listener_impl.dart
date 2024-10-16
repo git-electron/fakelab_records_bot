@@ -11,6 +11,6 @@ class OnMessageListenerImpl implements OnMessageListener {
 
   @override
   void call(TeleDartMessage message) {
-    print('message received');
+    print('message received: ${message.entities}');
   }
 }

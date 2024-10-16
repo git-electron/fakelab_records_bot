@@ -7,6 +7,8 @@ import 'package:firebase_dart/database.dart' as db;
 import 'package:fakelab_records_bot/core/di/di.dart';
 import 'package:fakelab_records_bot/core/constants/dotenv_constants.dart';
 
+import '../i18n/app_localization.g.dart';
+
 @module
 abstract class RegisterModule {
   @singleton
@@ -52,4 +54,7 @@ abstract class RegisterModule {
         app: injector.get(),
         databaseURL: DotEnvConstants.FIREBASE_DATABASE_URL,
       );
+
+  @singleton
+  Translations get t => AppLocale.ru.build();
 }

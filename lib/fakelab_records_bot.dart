@@ -29,4 +29,9 @@ Future<void> configure() async {
   teledart.onMessage().listen(injector<OnMessageListener>());
 
   teledart.onChosenInlineResult().listen(injector<OnInlineListener>());
+
+  teledart.onCallbackQuery().listen((data) {
+    print(data.data);
+    teledart.answerCallbackQuery(data.id);
+  });
 }
