@@ -2,7 +2,7 @@ import 'package:firebase_dart/database.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
-import '../../../../../../core/domain/model/user_model.dart';
+import '../../../../core/domain/model/user_model.dart';
 import 'get_user_repository.dart';
 
 @Singleton(as: GetUserRepository)

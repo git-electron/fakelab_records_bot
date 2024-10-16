@@ -1,8 +1,6 @@
-import 'package:fakelab_records_bot/core/domain/model/user_model.dart';
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
 import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_markup.dart';
 import 'package:fakelab_records_bot/feature/on_command/feature/on_order_command/domain/on_order_command.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/data/repository/get_user_repository.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;
@@ -14,58 +12,16 @@ class OnOrderCommandImpl implements OnOrderCommand {
   final TeleDart teledart;
   final OrderMarkup orderMarkup;
   final Translations translations;
-  final GetUserRepository getUserRepository;
 
   OnOrderCommandImpl({
     required this.logger,
     required this.teledart,
     required this.orderMarkup,
     required this.translations,
-    required this.getUserRepository,
   });
 
   @override
-  void call(TeleDartMessage message) async {
-    final User? user = await getUserRepository(message.from!.id);
-
-    if (user == null) {
-      _sendUnregisteredMessage(message);
-    } else {
-      _sendRegisteredMessage(message);
-    }
-  }
-
-  void _sendUnregisteredMessage(TeleDartMessage message) {
-    teledart.sendMessage(
-      message.chat.id,
-      translations.texts.start_command_text_unregistered(
-        firstName: message.from?.firstName ?? translations.user,
-      ),
-      parseMode: 'Markdown',
-      replyMarkup: _replyMarkupUnregistered,
-    );
-  }
-
-  ReplyKeyboardMarkup get _replyMarkupUnregistered {
-    final KeyboardButton shareContact = KeyboardButton(
-      text: translations.buttons.share_contact,
-      requestContact: true,
-    );
-
-    final List<List<KeyboardButton>> keyboard = [
-      [shareContact],
-    ];
-
-    final ReplyKeyboardMarkup markup = ReplyKeyboardMarkup(
-      keyboard: keyboard,
-      resizeKeyboard: true,
-      oneTimeKeyboard: true,
-    );
-
-    return markup;
-  }
-
-  void _sendRegisteredMessage(TeleDartMessage message) {
+  void call(TeleDartMessage message) {
     teledart.sendMessage(
       message.chat.id,
       translations.texts.order_text,
