@@ -1,10 +1,10 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/di/di.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/domain/on_start_command.dart';
+import '../../../core/constants/constants.dart';
+import '../../../core/di/di.dart';
+import '../feature/on_start_command/domain/on_start_command.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:injectable/injectable.dart';
-import 'package:fakelab_records_bot/feature/on_command/domain/on_command_listener.dart';
+import 'on_command_listener.dart';
 
 @Singleton(as: OnCommandListener)
 class OnCommandListenerImpl implements OnCommandListener {

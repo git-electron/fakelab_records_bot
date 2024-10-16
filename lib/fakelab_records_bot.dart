@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:logger/logger.dart';
 import 'package:teledart/teledart.dart';
 import 'package:firebase_dart/firebase_dart.dart';
-import 'package:fakelab_records_bot/feature/on_inline/on_inline.dart';
-import 'package:fakelab_records_bot/feature/on_command/on_command.dart';
-import 'package:fakelab_records_bot/feature/on_message/on_message.dart';
+import 'feature/on_inline/on_inline.dart';
+import 'feature/on_command/on_command.dart';
+import 'feature/on_message/on_message.dart';
 
 import 'core/di/di.dart';
 

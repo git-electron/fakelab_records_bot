@@ -4,8 +4,8 @@ import 'package:teledart/telegram.dart';
 import 'package:firebase_dart/core.dart';
 import 'package:injectable/injectable.dart';
 import 'package:firebase_dart/database.dart' as db;
-import 'package:fakelab_records_bot/core/di/di.dart';
-import 'package:fakelab_records_bot/core/constants/dotenv_constants.dart';
+import 'di.dart';
+import '../constants/dotenv_constants.dart';
 
 import '../i18n/app_localization.g.dart';
 

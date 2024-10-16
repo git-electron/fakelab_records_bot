@@ -1,6 +1,6 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/di/di.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/di/di.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
 
 import 'on_start_command.dart';
 import 'package:logger/logger.dart';
