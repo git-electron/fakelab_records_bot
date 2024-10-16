@@ -3,4 +3,5 @@ class Constants {
 
   static const String startCommand = '/start';
   static const String menuCommand = '/menu';
+  static const String orderCommand = '/order';
 }

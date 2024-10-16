@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/feature/on_command/feature/on_menu_command/domain/on_menu_command.dart';
+import 'package:fakelab_records_bot/feature/on_command/feature/on_order_command/domain/on_order_command.dart';
 
 import '../../../core/constants/constants.dart';
 import '../feature/on_start_command/domain/on_start_command.dart';
@@ -12,11 +13,13 @@ class OnCommandListenerImpl implements OnCommandListener {
   final Logger logger;
   final OnMenuCommand onMenuCommand;
   final OnStartCommand onStartCommand;
+  final OnOrderCommand onOrderCommand;
 
   OnCommandListenerImpl({
     required this.logger,
     required this.onMenuCommand,
     required this.onStartCommand,
+    required this.onOrderCommand,
   });
 
   @override
@@ -40,6 +43,9 @@ Author: @$username (id$userId)''');
         break;
       case Constants.menuCommand:
         onMenuCommand(message);
+        break;
+      case Constants.orderCommand:
+        onOrderCommand(message);
         break;
       default:
         logger.w('Invalid command: $command');
