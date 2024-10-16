@@ -8,13 +8,13 @@ import 'on_callback_listener.dart';
 @Singleton(as: OnCallbackListener)
 class OnCallbackListenerImpl implements OnCallbackListener {
   final Logger logger;
+  final OnCallbackGoTo onCallbackGoTo;
   final OnCallbackOrder onCallbackOrder;
-  final OnCallbackGoTo onCallbackGoBack;
 
   OnCallbackListenerImpl({
     required this.logger,
+    required this.onCallbackGoTo,
     required this.onCallbackOrder,
-    required this.onCallbackGoBack,
   });
 
   @override
@@ -24,7 +24,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
         onCallbackOrder(callback);
         break;
       case 'go_to':
-        onCallbackGoBack(callback);
+        onCallbackGoTo(callback);
         break;
       default:
         break;
