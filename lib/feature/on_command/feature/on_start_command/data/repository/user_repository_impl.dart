@@ -16,7 +16,16 @@ class UserRepositoryImpl implements UserRepository {
   });
 
   @override
-  Future<User?> getUser(String userId) async {
-    return null;
+  Future<User?> getUser(int userId) async {
+    final String path = 'users/$userId';
+    final Map<String, dynamic>? userJson =
+        await database.reference().child(path).get();
+
+    logger.i('message');
+
+    if (userJson == null) return null;
+
+    final User user = User.fromJson(userJson);
+    return user;
   }
 }

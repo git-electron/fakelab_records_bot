@@ -2,3 +2,9 @@
 # Created by `dart pub`
 .dart_tool/
 .env*
+
+# Generated files
+*.g.dart
+*.gr.dart
+*.freezed.dart
+*.config.dart

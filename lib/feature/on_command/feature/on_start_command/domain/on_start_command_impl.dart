@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/data/repository/user_repository.dart';
+
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/di/di.dart';
 import '../../../../../core/i18n/app_localization.g.dart';
@@ -21,6 +23,8 @@ class OnStartCommandImpl implements OnStartCommand {
   @override
   void call(TeleDartMessage message) {
     final Translations t = injector.get();
+
+    injector<UserRepository>().getUser(message.from!.id);
 
     teledart.sendMessage(
       message.chat.id,
