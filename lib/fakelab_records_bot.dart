@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:logger/logger.dart';
 import 'package:teledart/teledart.dart';
 import 'package:firebase_dart/firebase_dart.dart';
-import 'feature/on_inline/on_inline.dart';
+import 'feature/on_callback/on_callback.dart';
 import 'feature/on_command/on_command.dart';
 import 'feature/on_message/on_message.dart';
 
@@ -28,10 +28,5 @@ Future<void> configure() async {
 
   teledart.onMessage().listen(injector<OnMessageListener>());
 
-  teledart.onChosenInlineResult().listen(injector<OnInlineListener>());
-
-  teledart.onCallbackQuery().listen((data) {
-    print(data.data);
-    teledart.answerCallbackQuery(data.id);
-  });
+  teledart.onCallbackQuery().listen(injector<OnCallbackListener>());
 }
