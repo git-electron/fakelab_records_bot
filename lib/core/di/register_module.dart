@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:convert';
-
 import 'package:logger/logger.dart';
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
@@ -25,28 +22,34 @@ abstract class RegisterModule {
       );
 
   @singleton
-  Telegram get telegram => Telegram(DotEnvConstants.apiToken);
+  Telegram get telegram => Telegram(DotEnvConstants.TELEGRAM_API_TOKEN);
 
   @singleton
   @preResolve
   Future<Event> get event async => Event((await telegram.getMe()).username!);
 
   @singleton
-  TeleDart get teledart => TeleDart(DotEnvConstants.apiToken, injector.get());
+  TeleDart get teledart =>
+      TeleDart(DotEnvConstants.TELEGRAM_API_TOKEN, injector.get());
 
   @singleton
   @preResolve
   Future<FirebaseApp> get app async => await Firebase.initializeApp(
-        options: FirebaseOptions.fromMap(
-          json.decode(
-            File('firebase-config.json').readAsStringSync(),
-          ),
+        options: FirebaseOptions(
+          apiKey: DotEnvConstants.FIREBASE_API_KEY,
+          authDomain: DotEnvConstants.FIREBASE_AUTH_DOMAIN,
+          databaseURL: DotEnvConstants.FIREBASE_DATABASE_URL,
+          projectId: DotEnvConstants.FIREBASE_PROJECT_ID,
+          storageBucket: DotEnvConstants.FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: DotEnvConstants.FIREBASE_MESSAGING_SENDER_ID,
+          appId: DotEnvConstants.FIREBASE_APP_ID,
+          measurementId: DotEnvConstants.FIREBASE_MEASUREMENT_ID,
         ),
       );
 
   @singleton
   db.FirebaseDatabase get database => db.FirebaseDatabase(
         app: injector.get(),
-        databaseURL: DotEnvConstants.realtimeDatabaseUrl,
+        databaseURL: DotEnvConstants.FIREBASE_DATABASE_URL,
       );
 }

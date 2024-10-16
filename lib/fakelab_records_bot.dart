@@ -7,8 +7,8 @@ import 'package:teledart/teledart.dart';
 import 'core/di/di.dart';
 
 Future<void> configure() async {
-  await configureDependencies();
   FirebaseDart.setup();
+  await configureDependencies();
 
   injector<Logger>().i('Starting configuration');
   injector<Logger>().i('Dependencies injected');
