@@ -2,21 +2,21 @@ import 'package:firebase_dart/database.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
-import '../../domain/model/user_model.dart';
-import 'user_repository.dart';
+import '../../../../../../core/domain/model/user_model.dart';
+import 'get_user_repository.dart';
 
-@Singleton(as: UserRepository)
-class UserRepositoryImpl implements UserRepository {
+@Singleton(as: GetUserRepository)
+class GetUserRepositoryImpl implements GetUserRepository {
   final Logger logger;
   final FirebaseDatabase database;
 
-  UserRepositoryImpl({
+  GetUserRepositoryImpl({
     required this.logger,
     required this.database,
   });
 
   @override
-  Future<User?> getUser(int userId) async {
+  Future<User?> call(int userId) async {
     final String path = 'users/$userId';
     final Map<String, dynamic>? data =
         await database.reference().child(path).get();

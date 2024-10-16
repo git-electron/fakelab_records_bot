@@ -1,10 +1,10 @@
-import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/data/repository/user_repository.dart';
+import 'package:fakelab_records_bot/feature/on_command/feature/on_start_command/data/repository/get_user_repository.dart';
 import 'package:teledart/teledart.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/i18n/app_localization.g.dart';
 
-import 'model/user_model.dart';
+import '../../../../../core/domain/model/user_model.dart';
 import 'on_start_command.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;
@@ -15,18 +15,18 @@ class OnStartCommandImpl implements OnStartCommand {
   final Logger logger;
   final TeleDart teledart;
   final Translations translations;
-  final UserRepository userRepository;
+  final GetUserRepository getUserRepository;
 
   OnStartCommandImpl({
     required this.logger,
     required this.teledart,
     required this.translations,
-    required this.userRepository,
+    required this.getUserRepository,
   });
 
   @override
   void call(TeleDartMessage message) async {
-    final User? user = await userRepository.getUser(message.from!.id);
+    final User? user = await getUserRepository(message.from!.id);
 
     if (user == null) {
       _sendUnregisteredMessage(message);
