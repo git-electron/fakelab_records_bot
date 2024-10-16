@@ -1,6 +1,7 @@
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/main_menu_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_markup.dart';
+import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_go_to/domain/on_callback_go_to.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_main_menu/domain/on_callback_main_menu.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order/domain/on_callback_order.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
@@ -10,14 +11,16 @@ import 'package:teledart/teledart.dart';
 class OnCallbackGoToImpl implements OnCallbackGoTo {
   final Logger logger;
   final TeleDart teledart;
-  final OrderMarkup orderMarkup;
-  final MainMenuMarkup mainMenuMarkup;
+  final Translations translations;
+  final OnCallbackOrder onCallbackOrder;
+  final OnCallbackMainMenu onCallbackMainMenu;
 
   OnCallbackGoToImpl({
     required this.logger,
     required this.teledart,
-    required this.orderMarkup,
-    required this.mainMenuMarkup,
+    required this.translations,
+    required this.onCallbackOrder,
+    required this.onCallbackMainMenu,
   });
 
   @override
@@ -27,24 +30,16 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
 
     if (message == null || to == null) return;
 
-    final Chat chat = message.chat;
-
-    teledart.answerCallbackQuery(callback.id);
-    teledart.editMessageReplyMarkup(
-      chatId: chat.id,
-      messageId: message.messageId,
-      replyMarkup: _replyMarkup(to),
-    );
-  }
-
-  InlineKeyboardMarkup _replyMarkup(String to) {
     switch (to) {
       case 'main_menu':
-        return mainMenuMarkup();
+        onCallbackMainMenu(callback);
+        break;
       case 'order':
-        return orderMarkup();
+        onCallbackOrder(callback);
+        break;
       default:
-        return mainMenuMarkup();
+        onCallbackMainMenu(callback);
+        break;
     }
   }
 }

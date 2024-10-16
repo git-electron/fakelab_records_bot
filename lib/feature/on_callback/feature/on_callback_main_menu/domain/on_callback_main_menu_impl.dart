@@ -1,24 +1,23 @@
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order/domain/on_callback_order.dart';
+import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
+import 'package:fakelab_records_bot/feature/on_callback/domain/models/main_menu_markup.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_main_menu/domain/on_callback_main_menu.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 
-import '../../../../../core/i18n/app_localization.g.dart';
-
-@Singleton(as: OnCallbackOrder)
-class OnCallbackOrderImpl implements OnCallbackOrder {
+@Singleton(as: OnCallbackMainMenu)
+class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
   final Logger logger;
   final TeleDart teledart;
-  final OrderMarkup orderMarkup;
   final Translations translations;
+  final MainMenuMarkup mainMenuMarkup;
 
-  OnCallbackOrderImpl({
+  OnCallbackMainMenuImpl({
     required this.logger,
     required this.teledart,
-    required this.orderMarkup,
     required this.translations,
+    required this.mainMenuMarkup,
   });
 
   @override
@@ -31,11 +30,11 @@ class OnCallbackOrderImpl implements OnCallbackOrder {
 
     teledart.answerCallbackQuery(callback.id);
     teledart.editMessageText(
-      translations.texts.order_text,
+      translations.texts.main_menu_text(firstName: callback.from.firstName),
       chatId: chat.id,
       messageId: message.messageId,
       parseMode: 'Markdown',
-      replyMarkup: orderMarkup(),
+      replyMarkup: mainMenuMarkup(),
     );
   }
 }
