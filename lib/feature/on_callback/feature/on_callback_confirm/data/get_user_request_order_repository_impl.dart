@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/data/get_user_request_order_repository.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
 import 'package:firebase_dart/database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
@@ -17,11 +18,14 @@ class GetUserRequestOrderRepositoryImpl
   });
 
   @override
-  Future<Order?> call(int userId) async {
+  Future<Order?> call(int userId, {required OrderType orderType}) async {
     try {
       final String path = 'orders';
-      final Map<String, dynamic>? data =
-          await reference.child(path).equalTo(userId, key: 'customer.id').get();
+      final Map<String, dynamic>? data = await reference
+          .child(path)
+          .equalTo(userId, key: 'customer.id')
+          .equalTo(orderType, key: 'orderType')
+          .get();
 
       logger.i('''Realtime Database request:
 Path: $path
