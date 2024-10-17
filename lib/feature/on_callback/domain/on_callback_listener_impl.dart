@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_go_to/domain/on_callback_go_to.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order/domain/on_callback_order.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order_beat/domain/on_callback_order_beat.dart';
@@ -7,11 +8,14 @@ import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_orde
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:injectable/injectable.dart';
+import 'package:teledart/teledart.dart';
 import 'on_callback_listener.dart';
 
 @Singleton(as: OnCallbackListener)
 class OnCallbackListenerImpl implements OnCallbackListener {
   final Logger logger;
+  final TeleDart teledart;
+  final Translations translations;
   final OnCallbackGoTo onCallbackGoTo;
   final OnCallbackOrder onCallbackOrder;
   final OnCallbackOrderMix onCallbackOrderMix;
@@ -21,6 +25,8 @@ class OnCallbackListenerImpl implements OnCallbackListener {
 
   OnCallbackListenerImpl({
     required this.logger,
+    required this.teledart,
+    required this.translations,
     required this.onCallbackGoTo,
     required this.onCallbackOrder,
     required this.onCallbackOrderMix,
@@ -31,6 +37,10 @@ class OnCallbackListenerImpl implements OnCallbackListener {
 
   @override
   void call(TeleDartCallbackQuery callback) {
+    logger.i('''Callback button pressed
+Callback ID: ${callback.id}
+Callback data: ${callback.data}''');
+
     switch (callback.data?.split(':').first) {
       case 'order':
         onCallbackOrder(callback);
@@ -51,6 +61,11 @@ class OnCallbackListenerImpl implements OnCallbackListener {
         onCallbackGoTo(callback);
         break;
       default:
+        teledart.answerCallbackQuery(
+          callback.id,
+          text: translations.errors.not_implemented,
+          showAlert: true,
+        );
         break;
     }
   }
