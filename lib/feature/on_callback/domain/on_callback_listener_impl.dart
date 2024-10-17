@@ -39,34 +39,39 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   void call(TeleDartCallbackQuery callback) {
     logger.i('''Callback button pressed
 Callback ID: ${callback.id}
-Callback data: ${callback.data}''');
+Callback data: ${callback.data}
+Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
 
-    switch (callback.data?.split(':').first) {
-      case 'order':
-        onCallbackOrder(callback);
-        break;
-      case 'order_mix':
-        onCallbackOrderMix(callback);
-        break;
-      case 'order_mastering':
-        onCallbackOrderMastering(callback);
-        break;
-      case 'order_mix_and_mastering':
-        onCallbackOrderMixAndMastering(callback);
-        break;
-      case 'order_beat':
-        onCallbackOrderBeat(callback);
-        break;
-      case 'go_to':
-        onCallbackGoTo(callback);
-        break;
-      default:
-        teledart.answerCallbackQuery(
-          callback.id,
-          text: translations.errors.not_implemented,
-          showAlert: true,
-        );
-        break;
+    try {
+      switch (callback.data?.split(':').first) {
+        case 'order':
+          onCallbackOrder(callback);
+          break;
+        case 'order_mix':
+          onCallbackOrderMix(callback);
+          break;
+        case 'order_mastering':
+          onCallbackOrderMastering(callback);
+          break;
+        case 'order_mix_and_mastering':
+          onCallbackOrderMixAndMastering(callback);
+          break;
+        case 'order_beat':
+          onCallbackOrderBeat(callback);
+          break;
+        case 'go_to':
+          onCallbackGoTo(callback);
+          break;
+        default:
+          teledart.answerCallbackQuery(
+            callback.id,
+            text: translations.errors.not_implemented,
+            showAlert: true,
+          );
+          break;
+      }
+    } catch (error) {
+      logger.e('Failed to answer callback query', error: error);
     }
   }
 }

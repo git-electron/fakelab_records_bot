@@ -56,7 +56,7 @@ class OnContactReceivedImpl implements OnContactReceived {
       translations.texts.main_menu_text(
         firstName: message.from?.firstName ?? translations.user,
       ),
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: mainMenuMarkup(),
     );
   }

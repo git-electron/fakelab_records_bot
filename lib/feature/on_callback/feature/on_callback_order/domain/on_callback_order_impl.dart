@@ -34,7 +34,7 @@ class OnCallbackOrderImpl implements OnCallbackOrder {
       translations.texts.order_text,
       chatId: chat.id,
       messageId: message.messageId,
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: orderMarkup(),
     );
   }

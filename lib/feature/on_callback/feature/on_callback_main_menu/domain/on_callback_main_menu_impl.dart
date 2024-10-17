@@ -33,7 +33,7 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
       translations.texts.main_menu_text(firstName: callback.from.firstName),
       chatId: chat.id,
       messageId: message.messageId,
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: mainMenuMarkup(),
     );
   }

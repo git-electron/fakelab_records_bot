@@ -77,7 +77,7 @@ Author: @$username (id$userId)''');
       translations.texts.start_command_text_unregistered(
         firstName: message.from?.firstName ?? translations.user,
       ),
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: _replyMarkupUnregistered,
     );
   }

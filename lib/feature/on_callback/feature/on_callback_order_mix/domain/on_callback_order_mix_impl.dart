@@ -33,7 +33,7 @@ class OnCallbackOrderMixImpl implements OnCallbackOrderMix {
       translations.texts.order_mix_text,
       chatId: chat.id,
       messageId: message.messageId,
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: orderMixMarkup(),
     );
   }

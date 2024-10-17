@@ -34,7 +34,7 @@ class OnCallbackOrderMixAndMasteringImpl
       translations.texts.order_mix_and_mastering_text,
       chatId: chat.id,
       messageId: message.messageId,
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: orderMixAndMasteringMarkup(),
     );
   }

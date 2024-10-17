@@ -33,7 +33,7 @@ class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
       translations.texts.order_beat_text,
       chatId: chat.id,
       messageId: message.messageId,
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: orderBeatMarkup(),
     );
   }

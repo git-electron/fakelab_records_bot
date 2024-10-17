@@ -25,7 +25,7 @@ class OnOrderCommandImpl implements OnOrderCommand {
     teledart.sendMessage(
       message.chat.id,
       translations.texts.order_text,
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: orderMarkup(),
     );
   }

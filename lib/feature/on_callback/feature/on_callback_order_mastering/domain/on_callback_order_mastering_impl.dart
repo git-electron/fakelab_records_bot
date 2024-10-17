@@ -33,7 +33,7 @@ class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
       translations.texts.order_mastering_text,
       chatId: chat.id,
       messageId: message.messageId,
-      parseMode: 'Markdown',
+      parseMode: 'HTML',
       replyMarkup: orderMasteringMarkup(),
     );
   }
