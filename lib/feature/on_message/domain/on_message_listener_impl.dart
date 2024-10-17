@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/feature/on_message/feature/on_contact_received/domain/on_contact_received.dart';
+import '../feature/on_contact_received/domain/on_contact_received.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:injectable/injectable.dart';

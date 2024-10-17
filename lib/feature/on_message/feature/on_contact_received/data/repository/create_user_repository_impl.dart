@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/feature/on_message/feature/on_contact_received/data/repository/create_user_repository.dart';
+import 'create_user_repository.dart';
 import 'package:firebase_dart/database.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';

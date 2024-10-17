@@ -1,7 +1,7 @@
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_go_to/domain/on_callback_go_to.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_main_menu/domain/on_callback_main_menu.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order/domain/on_callback_order.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import 'on_callback_go_to.dart';
+import '../../on_callback_main_menu/domain/on_callback_main_menu.dart';
+import '../../on_callback_order/domain/on_callback_order.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';

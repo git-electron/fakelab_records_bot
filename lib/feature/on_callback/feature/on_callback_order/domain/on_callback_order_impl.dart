@@ -1,5 +1,5 @@
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order/domain/on_callback_order.dart';
+import '../../../domain/models/order_markup.dart';
+import 'on_callback_order.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';

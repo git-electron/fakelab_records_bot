@@ -1,13 +1,13 @@
+import 'package:firebase_dart/core.dart';
+import 'package:firebase_dart/database.dart' as db;
+import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
-import 'package:firebase_dart/core.dart';
-import 'package:injectable/injectable.dart';
-import 'package:firebase_dart/database.dart' as db;
-import 'di.dart';
-import '../constants/dotenv_constants.dart';
 
+import '../constants/dotenv_constants.dart';
 import '../i18n/app_localization.g.dart';
+import 'di.dart';
 
 @module
 abstract class RegisterModule {

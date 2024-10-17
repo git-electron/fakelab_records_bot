@@ -1,6 +1,6 @@
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/main_menu_markup.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_menu_command/domain/on_menu_command.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../../on_callback/domain/models/main_menu_markup.dart';
+import 'on_menu_command.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;

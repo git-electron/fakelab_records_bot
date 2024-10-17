@@ -1,8 +1,8 @@
-import 'package:fakelab_records_bot/core/domain/model/user_model.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_command/data/repository/get_user_repository.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_menu_command/domain/on_menu_command.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_order_command/domain/on_order_command.dart';
+import '../../../core/domain/model/user_model.dart';
+import '../../../core/i18n/app_localization.g.dart';
+import '../data/repository/get_user_repository.dart';
+import '../feature/on_menu_command/domain/on_menu_command.dart';
+import '../feature/on_order_command/domain/on_order_command.dart';
 import 'package:teledart/teledart.dart';
 
 import '../../../core/constants/constants.dart';

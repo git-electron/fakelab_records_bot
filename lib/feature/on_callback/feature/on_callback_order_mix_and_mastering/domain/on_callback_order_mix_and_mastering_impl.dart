@@ -1,10 +1,11 @@
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/order_mix_and_mastering_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order_mix_and_mastering/domain/on_callback_order_mix_and_mastering.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../domain/models/order_mix_and_mastering_markup.dart';
+import 'on_callback_order_mix_and_mastering.dart';
 
 @Singleton(as: OnCallbackOrderMixAndMastering)
 class OnCallbackOrderMixAndMasteringImpl

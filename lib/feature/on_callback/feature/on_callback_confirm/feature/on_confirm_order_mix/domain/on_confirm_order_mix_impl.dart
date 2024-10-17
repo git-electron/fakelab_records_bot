@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:fakelab_records_bot/core/domain/service/id_service.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/feature/on_confirm_order_mix/domain/on_confirm_order_mix.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_main_menu/domain/on_callback_main_menu.dart';
+import '../../../../../../../core/domain/service/id_service.dart';
+import '../../../../../../../core/i18n/app_localization.g.dart';
+import 'on_confirm_order_mix.dart';
+import '../../../../on_callback_main_menu/domain/on_callback_main_menu.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';

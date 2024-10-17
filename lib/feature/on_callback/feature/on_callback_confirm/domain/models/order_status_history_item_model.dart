@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_status.dart';
+import 'order_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_status_history_item_model.freezed.dart';

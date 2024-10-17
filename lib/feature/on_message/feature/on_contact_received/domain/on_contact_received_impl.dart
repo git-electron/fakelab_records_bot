@@ -1,7 +1,7 @@
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/main_menu_markup.dart';
-import 'package:fakelab_records_bot/feature/on_message/feature/on_contact_received/data/repository/create_user_repository.dart';
-import 'package:fakelab_records_bot/feature/on_message/feature/on_contact_received/domain/on_contact_received.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../../on_callback/domain/models/main_menu_markup.dart';
+import '../data/repository/create_user_repository.dart';
+import 'on_contact_received.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;

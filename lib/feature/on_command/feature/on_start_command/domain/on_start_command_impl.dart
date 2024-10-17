@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/main_menu_markup.dart';
+import '../../../../on_callback/domain/models/main_menu_markup.dart';
 import 'package:teledart/teledart.dart';
 
 import '../../../../../core/i18n/app_localization.g.dart';
