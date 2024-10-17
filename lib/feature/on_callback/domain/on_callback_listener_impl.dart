@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/on_callback_confirm.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_go_to/domain/on_callback_go_to.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order/domain/on_callback_order.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_order_beat/domain/on_callback_order_beat.dart';
@@ -18,6 +19,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final Translations translations;
   final OnCallbackGoTo onCallbackGoTo;
   final OnCallbackOrder onCallbackOrder;
+  final OnCallbackConfirm onCallbackConfirm;
   final OnCallbackOrderMix onCallbackOrderMix;
   final OnCallbackOrderBeat onCallbackOrderBeat;
   final OnCallbackOrderMastering onCallbackOrderMastering;
@@ -29,6 +31,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.translations,
     required this.onCallbackGoTo,
     required this.onCallbackOrder,
+    required this.onCallbackConfirm,
     required this.onCallbackOrderMix,
     required this.onCallbackOrderBeat,
     required this.onCallbackOrderMastering,
@@ -61,6 +64,9 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
           break;
         case 'go_to':
           onCallbackGoTo(callback);
+          break;
+        case 'confirm':
+          onCallbackConfirm(callback);
           break;
         default:
           teledart.answerCallbackQuery(
