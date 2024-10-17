@@ -17,16 +17,21 @@ class GetUserRepositoryImpl implements GetUserRepository {
 
   @override
   Future<User?> call(int userId) async {
-    final String path = 'users/$userId';
-    final Map<String, dynamic>? data = await reference.child(path).get();
+    try {
+      final String path = 'users/$userId';
+      final Map<String, dynamic>? data = await reference.child(path).get();
 
-    logger.i('''Realtime Database request:
+      logger.i('''Realtime Database request:
 Path: $path
 Data: $data''');
 
-    if (data == null) return null;
+      if (data == null) return null;
 
-    final User user = User.fromJson(data);
-    return user;
+      final User user = User.fromJson(data);
+      return user;
+    } catch (error) {
+      logger.e('Failed to get user', error: error);
+      return null;
+    }
   }
 }

@@ -17,12 +17,17 @@ class CreateUserRepositoryImpl implements CreateUserRepository {
 
   @override
   Future<void> call(int userId, {required User user}) async {
-    final String path = 'users/$userId';
-    final Map<String, dynamic> data = user.toJson();
-    await reference.child(path).set(data);
+    try {
+      final String path = 'users/$userId';
+      final Map<String, dynamic> data = user.toJson();
+      await reference.child(path).set(data);
 
-    logger.i('''Realtime Database creation request:
+      logger.i('''Realtime Database creation request:
 Path: $path
 Data: $data''');
+      return;
+    } catch (error) {
+      logger.e('Failed to create user', error: error);
+    }
   }
 }
