@@ -11,6 +11,7 @@ class OrderService with _$OrderService {
   factory OrderService({
     required OrderServiceType type,
     required double totalCost,
+    required bool costFrom,
   }) = _OrderService;
 
   factory OrderService.fromJson(Map<String, dynamic> json) => _$OrderServiceFromJson(json);

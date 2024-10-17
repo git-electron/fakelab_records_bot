@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/data/get_user_request_order_repository.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_status.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
 import 'package:firebase_dart/database.dart';
 import 'package:injectable/injectable.dart' hide Order;
@@ -23,8 +24,8 @@ class GetUserRequestOrderRepositoryImpl
       final String path = 'orders';
       final Map<String, dynamic>? data = await reference
           .child(path)
-          .equalTo(userId, key: 'customer.id')
-          .equalTo(orderType, key: 'orderType')
+          .orderByChild('filters/userIdStatusType')
+          .equalTo('$userId-${OrderStatus.REQUEST.name}-${orderType.name}')
           .get();
 
       logger.i('''Realtime Database request:
@@ -33,10 +34,10 @@ Data: $data''');
 
       if (data == null) return null;
 
-      final Order order = Order.fromJson(data);
+      final Order order = Order.fromJson(data.values.first);
       return order;
     } catch (error) {
-      logger.e('Failed to get user', error: error);
+      logger.e('Failed to get user request order', error: error);
       return null;
     }
   }
