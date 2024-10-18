@@ -34,40 +34,44 @@ class OnCommandListenerImpl implements OnCommandListener {
 
   @override
   void call(TeleDartMessage message) async {
-    final String? command = message.text;
-    final String? username = message.from?.username;
-    final int? userId = message.from?.id;
+    try {
+      final String? command = message.text;
+      final String? username = message.from?.username;
+      final int? userId = message.from?.id;
 
-    logger.i('''Received a new command
+      logger.i('''Received a new command
 Command: $command
 Author: @$username (id$userId)''');
 
-    if (command == null) {
-      logger.e('Command is empty');
-      return;
-    }
+      if (command == null) {
+        logger.e('Command is empty');
+        return;
+      }
 
-    final User? user = await getUserRepository(message.from!.id);
+      final User? user = await getUserRepository(message.from!.id);
 
-    if (user == null) {
-      logger.w('Unauthorized! Sending authorization message');
-      _sendUnregisteredMessage(message);
-      return;
-    }
+      if (user == null) {
+        logger.w('Unauthorized! Sending authorization message');
+        _sendUnregisteredMessage(message);
+        return;
+      }
 
-    switch (command) {
-      case Constants.startCommand:
-        onStartCommand(message);
-        break;
-      case Constants.menuCommand:
-        onMenuCommand(message);
-        break;
-      case Constants.orderCommand:
-        onOrderCommand(message);
-        break;
-      default:
-        logger.w('Invalid command: $command');
-        break;
+      switch (command) {
+        case Constants.startCommand:
+          onStartCommand(message);
+          break;
+        case Constants.menuCommand:
+          onMenuCommand(message);
+          break;
+        case Constants.orderCommand:
+          onOrderCommand(message);
+          break;
+        default:
+          logger.w('Invalid command: $command');
+          break;
+      }
+    } catch (error) {
+      logger.e('Failed to handle command', error: error);
     }
   }
 
