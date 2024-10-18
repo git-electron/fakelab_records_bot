@@ -1,5 +1,6 @@
 import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../domain/models/order_mastering_markup.dart';
+import '../../on_callback_confirm/domain/models/order_type.dart';
 import 'on_callback_order_mastering.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
@@ -27,10 +28,11 @@ class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
     if (message == null) return;
 
     final Chat chat = message.chat;
+    final String totalCost = OrderType.MASTERING.totalCostFormatted;
 
     teledart.answerCallbackQuery(callback.id);
     teledart.editMessageText(
-      translations.texts.order_mastering_text,
+      translations.texts.order_mastering_text(totalCost: totalCost),
       chatId: chat.id,
       messageId: message.messageId,
       parseMode: 'HTML',

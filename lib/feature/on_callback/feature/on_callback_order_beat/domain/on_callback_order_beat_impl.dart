@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
+
 import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../domain/models/order_beat_markup.dart';
 import 'on_callback_order_beat.dart';
@@ -27,10 +29,11 @@ class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
     if (message == null) return;
 
     final Chat chat = message.chat;
+    final String totalCost = OrderType.BEAT.totalCostFormatted;
 
     teledart.answerCallbackQuery(callback.id);
     teledart.editMessageText(
-      translations.texts.order_beat_text,
+      translations.texts.order_beat_text(totalCost: totalCost),
       chatId: chat.id,
       messageId: message.messageId,
       parseMode: 'HTML',

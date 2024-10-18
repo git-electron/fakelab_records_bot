@@ -3,46 +3,51 @@ import 'dart:async';
 import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
 import 'package:fakelab_records_bot/core/extensions/double_extensions.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_model.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/feature/on_confirm_order_mix/domain/service/create_mix_order_service.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/service/create_order_service.dart';
 
 import '../../../../../../../core/domain/service/id_service.dart';
 import '../../../../../../../core/i18n/app_localization.g.dart';
-import 'on_confirm_order_mix.dart';
-import '../../../../on_callback_main_menu/domain/on_callback_main_menu.dart';
+import '../../on_callback_main_menu/domain/on_callback_main_menu.dart';
+import 'on_confirm_order.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;
 import 'package:teledart/teledart.dart';
 
-@Singleton(as: OnConfirmOrderMix)
-class OnConfirmOrderMixImpl implements OnConfirmOrderMix {
+@Injectable(as: OnConfirmOrder)
+class OnConfirmOrderImpl implements OnConfirmOrder {
   final Logger logger;
   final TeleDart teledart;
   final IdService idService;
   final Translations translations;
   final OnCallbackMainMenu onCallbackMainMenu;
-  final CreateMixOrderService createMixOrderService;
+  final CreateOrderService createOrderService;
 
-  OnConfirmOrderMixImpl({
+  OnConfirmOrderImpl({
     required this.logger,
     required this.teledart,
     required this.idService,
     required this.translations,
     required this.onCallbackMainMenu,
-    required this.createMixOrderService,
+    required this.createOrderService,
   });
 
   static const int initialSeconds = 10;
 
   @override
-  void call(TeleDartCallbackQuery callback) async {
+  void call(TeleDartCallbackQuery callback,
+      {required OrderType orderType}) async {
     final Message? message = callback.message;
 
     if (message == null) return;
 
     final Chat chat = message.chat;
 
-    final Order? order = await createMixOrderService(callback.from.id);
+    final Order? order = await createOrderService(
+      callback.from.id,
+      orderType: orderType,
+    );
 
     teledart.answerCallbackQuery(callback.id);
     if (order == null) {
@@ -110,9 +115,9 @@ class OnConfirmOrderMixImpl implements OnConfirmOrderMix {
             .total_cost_from(totalCost: order.totalCost.inCurrencyRounded)
         : order.totalCost.inCurrencyRounded;
 
-    return translations.texts.mix_ordered_text(
+    return translations.texts.order_created_text(
       order: translations.cards.order.card(
-        orderId: order.id.substring(order.id.length - initialSeconds),
+        orderId: order.id.substring(order.id.length - 5),
         orderType: translations.cards.order.type.mix,
         status: translations.cards.order.status.request,
         dateCreated: order.dateCreated.dateFormatted,
