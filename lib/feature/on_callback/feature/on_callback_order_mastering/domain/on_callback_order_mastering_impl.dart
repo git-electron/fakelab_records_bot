@@ -23,20 +23,24 @@ class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
 
   @override
   void call(TeleDartCallbackQuery callback) {
-    final Message? message = callback.message;
+    try {
+      final Message? message = callback.message;
 
-    if (message == null) return;
+      if (message == null) return;
 
-    final Chat chat = message.chat;
-    final String totalCost = OrderType.MASTERING.totalCostFormatted;
+      final Chat chat = message.chat;
+      final String totalCost = OrderType.MASTERING.totalCostFormatted;
 
-    teledart.answerCallbackQuery(callback.id);
-    teledart.editMessageText(
-      translations.texts.order_mastering_text(totalCost: totalCost),
-      chatId: chat.id,
-      messageId: message.messageId,
-      parseMode: 'HTML',
-      replyMarkup: orderMasteringMarkup(),
-    );
+      teledart.answerCallbackQuery(callback.id);
+      teledart.editMessageText(
+        translations.texts.order_mastering_text(totalCost: totalCost),
+        chatId: chat.id,
+        messageId: message.messageId,
+        parseMode: 'HTML',
+        replyMarkup: orderMasteringMarkup(),
+      );
+    } catch (error) {
+      logger.e(error);
+    }
   }
 }

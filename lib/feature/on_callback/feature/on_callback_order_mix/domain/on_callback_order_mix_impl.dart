@@ -23,20 +23,24 @@ class OnCallbackOrderMixImpl implements OnCallbackOrderMix {
 
   @override
   void call(TeleDartCallbackQuery callback) {
-    final Message? message = callback.message;
+    try {
+      final Message? message = callback.message;
 
-    if (message == null) return;
+      if (message == null) return;
 
-    final Chat chat = message.chat;
-    final String totalCost = OrderType.MIX.totalCostFormatted;
+      final Chat chat = message.chat;
+      final String totalCost = OrderType.MIX.totalCostFormatted;
 
-    teledart.answerCallbackQuery(callback.id);
-    teledart.editMessageText(
-      translations.texts.order_mix_text(totalCost: totalCost),
-      chatId: chat.id,
-      messageId: message.messageId,
-      parseMode: 'HTML',
-      replyMarkup: orderMixMarkup(),
-    );
+      teledart.answerCallbackQuery(callback.id);
+      teledart.editMessageText(
+        translations.texts.order_mix_text(totalCost: totalCost),
+        chatId: chat.id,
+        messageId: message.messageId,
+        parseMode: 'HTML',
+        replyMarkup: orderMixMarkup(),
+      );
+    } catch (error) {
+      logger.e(error);
+    }
   }
 }

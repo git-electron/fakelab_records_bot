@@ -26,26 +26,31 @@ class OnCallbackOrderMixAndMasteringImpl
 
   @override
   void call(TeleDartCallbackQuery callback) {
-    final Message? message = callback.message;
+    try {
+      final Message? message = callback.message;
 
-    if (message == null) return;
+      if (message == null) return;
 
-    final Chat chat = message.chat;
-    final String mixCost = OrderServiceType.MIX.totalCostFormatted;
-    final String masteringCost = OrderServiceType.MASTERING.totalCostFormatted;
-    final String totalCost = OrderType.MIX_AND_MASTERING.totalCostFormatted;
+      final Chat chat = message.chat;
+      final String mixCost = OrderServiceType.MIX.totalCostFormatted;
+      final String masteringCost =
+          OrderServiceType.MASTERING.totalCostFormatted;
+      final String totalCost = OrderType.MIX_AND_MASTERING.totalCostFormatted;
 
-    teledart.answerCallbackQuery(callback.id);
-    teledart.editMessageText(
-      translations.texts.order_mix_and_mastering_text(
-        mixCost: mixCost,
-        masteringCost: masteringCost,
-        totalCost: totalCost,
-      ),
-      chatId: chat.id,
-      messageId: message.messageId,
-      parseMode: 'HTML',
-      replyMarkup: orderMixAndMasteringMarkup(),
-    );
+      teledart.answerCallbackQuery(callback.id);
+      teledart.editMessageText(
+        translations.texts.order_mix_and_mastering_text(
+          mixCost: mixCost,
+          masteringCost: masteringCost,
+          totalCost: totalCost,
+        ),
+        chatId: chat.id,
+        messageId: message.messageId,
+        parseMode: 'HTML',
+        replyMarkup: orderMixAndMasteringMarkup(),
+      );
+    } catch (error) {
+      logger.e(error);
+    }
   }
 }

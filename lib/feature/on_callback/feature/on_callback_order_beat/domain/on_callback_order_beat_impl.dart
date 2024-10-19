@@ -24,20 +24,24 @@ class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
 
   @override
   void call(TeleDartCallbackQuery callback) {
-    final Message? message = callback.message;
+    try {
+      final Message? message = callback.message;
 
-    if (message == null) return;
+      if (message == null) return;
 
-    final Chat chat = message.chat;
-    final String totalCost = OrderType.BEAT.totalCostFormatted;
+      final Chat chat = message.chat;
+      final String totalCost = OrderType.BEAT.totalCostFormatted;
 
-    teledart.answerCallbackQuery(callback.id);
-    teledart.editMessageText(
-      translations.texts.order_beat_text(totalCost: totalCost),
-      chatId: chat.id,
-      messageId: message.messageId,
-      parseMode: 'HTML',
-      replyMarkup: orderBeatMarkup(),
-    );
+      teledart.answerCallbackQuery(callback.id);
+      teledart.editMessageText(
+        translations.texts.order_beat_text(totalCost: totalCost),
+        chatId: chat.id,
+        messageId: message.messageId,
+        parseMode: 'HTML',
+        replyMarkup: orderBeatMarkup(),
+      );
+    } catch (error) {
+      logger.e(error);
+    }
   }
 }

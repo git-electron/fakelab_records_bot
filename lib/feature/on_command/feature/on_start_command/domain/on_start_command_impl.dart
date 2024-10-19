@@ -24,13 +24,17 @@ class OnStartCommandImpl implements OnStartCommand {
 
   @override
   void call(TeleDartMessage message) {
-    teledart.sendMessage(
-      message.chat.id,
-      translations.texts.main_menu_text(
-        firstName: message.from?.firstName ?? translations.user,
-      ),
-      parseMode: 'HTML',
-      replyMarkup: mainMenuMarkup(),
-    );
+    try {
+      teledart.sendMessage(
+        message.chat.id,
+        translations.texts.main_menu_text(
+          firstName: message.from?.firstName ?? translations.user,
+        ),
+        parseMode: 'HTML',
+        replyMarkup: mainMenuMarkup(),
+      );
+    } catch (error) {
+      logger.e(error);
+    }
   }
 }

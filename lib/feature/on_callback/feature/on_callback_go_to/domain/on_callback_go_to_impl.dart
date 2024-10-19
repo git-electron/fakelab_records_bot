@@ -25,21 +25,25 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
 
   @override
   void call(TeleDartCallbackQuery callback) {
-    final Message? message = callback.message;
-    final String? to = callback.data?.split(':').last;
+    try {
+      final Message? message = callback.message;
+      final String? to = callback.data?.split(':').last;
 
-    if (message == null || to == null) return;
+      if (message == null || to == null) return;
 
-    switch (to) {
-      case 'main_menu':
-        onCallbackMainMenu(callback);
-        break;
-      case 'order':
-        onCallbackOrder(callback);
-        break;
-      default:
-        onCallbackMainMenu(callback);
-        break;
+      switch (to) {
+        case 'main_menu':
+          onCallbackMainMenu(callback);
+          break;
+        case 'order':
+          onCallbackOrder(callback);
+          break;
+        default:
+          onCallbackMainMenu(callback);
+          break;
+      }
+    } catch (error) {
+      logger.e(error);
     }
   }
 }

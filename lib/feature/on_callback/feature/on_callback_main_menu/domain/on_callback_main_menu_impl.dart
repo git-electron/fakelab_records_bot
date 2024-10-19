@@ -22,19 +22,23 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
 
   @override
   void call(TeleDartCallbackQuery callback) {
-    final Message? message = callback.message;
+    try {
+      final Message? message = callback.message;
 
-    if (message == null) return;
+      if (message == null) return;
 
-    final Chat chat = message.chat;
+      final Chat chat = message.chat;
 
-    teledart.answerCallbackQuery(callback.id);
-    teledart.editMessageText(
-      translations.texts.main_menu_text(firstName: callback.from.firstName),
-      chatId: chat.id,
-      messageId: message.messageId,
-      parseMode: 'HTML',
-      replyMarkup: mainMenuMarkup(),
-    );
+      teledart.answerCallbackQuery(callback.id);
+      teledart.editMessageText(
+        translations.texts.main_menu_text(firstName: callback.from.firstName),
+        chatId: chat.id,
+        messageId: message.messageId,
+        parseMode: 'HTML',
+        replyMarkup: mainMenuMarkup(),
+      );
+    } catch (error) {
+      logger.e(error);
+    }
   }
 }

@@ -22,11 +22,15 @@ class OnOrderCommandImpl implements OnOrderCommand {
 
   @override
   void call(TeleDartMessage message) {
-    teledart.sendMessage(
-      message.chat.id,
-      translations.texts.order_text,
-      parseMode: 'HTML',
-      replyMarkup: orderMarkup(),
-    );
+    try {
+      teledart.sendMessage(
+        message.chat.id,
+        translations.texts.order_text,
+        parseMode: 'HTML',
+        replyMarkup: orderMarkup(),
+      );
+    } catch (error) {
+      logger.e(error);
+    }
   }
 }

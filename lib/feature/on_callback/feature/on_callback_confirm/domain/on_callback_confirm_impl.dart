@@ -40,12 +40,15 @@ class OnCallbackConfirmImpl implements OnCallbackConfirm {
             _ => throw Exception()
           });
     } catch (error) {
-      print('no such method');
-      teledart.answerCallbackQuery(
-        callback.id,
-        text: translations.errors.not_implemented,
-        showAlert: true,
-      );
+      try {
+        teledart.answerCallbackQuery(
+          callback.id,
+          text: translations.errors.not_implemented,
+          showAlert: true,
+        );
+      } catch (error) {
+        logger.e(error);
+      }
     }
   }
 }

@@ -36,76 +36,82 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
   static const int initialSeconds = 10;
 
   @override
-  void call(TeleDartCallbackQuery callback,
-      {required OrderType orderType}) async {
-    final Message? message = callback.message;
+  void call(
+    TeleDartCallbackQuery callback, {
+    required OrderType orderType,
+  }) async {
+    try {
+      final Message? message = callback.message;
 
-    if (message == null) return;
+      if (message == null) return;
 
-    final Chat chat = message.chat;
+      final Chat chat = message.chat;
 
-    final Order? order = await createOrderService(
-      callback.from.id,
-      orderType: orderType,
-    );
-
-    teledart.answerCallbackQuery(callback.id);
-    if (order == null) {
-      teledart.editMessageText(
-        translations.texts.order_already_exists_text(
-          secondsLeft: initialSeconds,
-          secondsLeftPlural:
-              translations.plurals.seconds_left(n: initialSeconds),
-        ),
-        chatId: chat.id,
-        messageId: message.messageId,
-        parseMode: 'HTML',
+      final Order? order = await createOrderService(
+        callback.from.id,
+        orderType: orderType,
       );
 
-      Timer.periodic(const Duration(seconds: 1), (timer) async {
-        final int secondsLeft = initialSeconds - timer.tick;
-
+      teledart.answerCallbackQuery(callback.id);
+      if (order == null) {
         teledart.editMessageText(
           translations.texts.order_already_exists_text(
-            secondsLeft: secondsLeft,
+            secondsLeft: initialSeconds,
             secondsLeftPlural:
-                translations.plurals.seconds_left(n: secondsLeft),
+                translations.plurals.seconds_left(n: initialSeconds),
           ),
           chatId: chat.id,
           messageId: message.messageId,
           parseMode: 'HTML',
         );
 
-        if (secondsLeft <= 0) {
-          timer.cancel();
-          await Future.delayed(const Duration(seconds: 1));
-          onCallbackMainMenu(callback);
-        }
-      });
-    } else {
-      teledart.editMessageText(
-        _orderCreatedText(order, initialSeconds),
-        chatId: chat.id,
-        messageId: message.messageId,
-        parseMode: 'HTML',
-      );
+        Timer.periodic(const Duration(seconds: 1), (timer) async {
+          final int secondsLeft = initialSeconds - timer.tick;
 
-      Timer.periodic(const Duration(seconds: 1), (timer) async {
-        final int secondsLeft = initialSeconds - timer.tick;
+          teledart.editMessageText(
+            translations.texts.order_already_exists_text(
+              secondsLeft: secondsLeft,
+              secondsLeftPlural:
+                  translations.plurals.seconds_left(n: secondsLeft),
+            ),
+            chatId: chat.id,
+            messageId: message.messageId,
+            parseMode: 'HTML',
+          );
 
+          if (secondsLeft <= 0) {
+            timer.cancel();
+            await Future.delayed(const Duration(seconds: 1));
+            onCallbackMainMenu(callback);
+          }
+        });
+      } else {
         teledart.editMessageText(
-          _orderCreatedText(order, secondsLeft),
+          _orderCreatedText(order, initialSeconds),
           chatId: chat.id,
           messageId: message.messageId,
           parseMode: 'HTML',
         );
 
-        if (secondsLeft <= 0) {
-          timer.cancel();
-          await Future.delayed(const Duration(seconds: 1));
-          onCallbackMainMenu(callback);
-        }
-      });
+        Timer.periodic(const Duration(seconds: 1), (timer) async {
+          final int secondsLeft = initialSeconds - timer.tick;
+
+          teledart.editMessageText(
+            _orderCreatedText(order, secondsLeft),
+            chatId: chat.id,
+            messageId: message.messageId,
+            parseMode: 'HTML',
+          );
+
+          if (secondsLeft <= 0) {
+            timer.cancel();
+            await Future.delayed(const Duration(seconds: 1));
+            onCallbackMainMenu(callback);
+          }
+        });
+      }
+    } catch (error) {
+      logger.e(error);
     }
   }
 

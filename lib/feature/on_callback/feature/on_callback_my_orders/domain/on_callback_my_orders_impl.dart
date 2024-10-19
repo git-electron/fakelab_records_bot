@@ -12,5 +12,9 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
   });
 
   @override
-  void call(TeleDartCallbackQuery callback) {}
+  void call(TeleDartCallbackQuery callback) {
+    try {} catch (error) {
+      logger.e(error);
+    }
+  }
 }

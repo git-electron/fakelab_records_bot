@@ -27,27 +27,31 @@ class OnContactReceivedImpl implements OnContactReceived {
 
   @override
   void call(TeleDartMessage message, {required Contact contact}) async {
-    if (contact.userId == null || message.from == null) return;
+    try {
+      if (contact.userId == null || message.from == null) return;
 
-    final User user = User(
-      id: contact.userId!,
-      username: message.from!.username,
-      firstName: contact.firstName,
-      lastName: contact.lastName,
-      phoneNumber: contact.phoneNumber,
-    );
+      final User user = User(
+        id: contact.userId!,
+        username: message.from!.username,
+        firstName: contact.firstName,
+        lastName: contact.lastName,
+        phoneNumber: contact.phoneNumber,
+      );
 
-    await createUserRepository(user.id, user: user);
+      await createUserRepository(user.id, user: user);
 
-    teledart.sendMessage(
-      message.chat.id,
-      translations.texts.registered_text,
-      replyMarkup: ReplyKeyboardRemove(removeKeyboard: true),
-    );
+      teledart.sendMessage(
+        message.chat.id,
+        translations.texts.registered_text,
+        replyMarkup: ReplyKeyboardRemove(removeKeyboard: true),
+      );
 
-    await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: 1));
 
-    _sendRegisteredMessage(message);
+      _sendRegisteredMessage(message);
+    } catch (error) {
+      logger.e(error);
+    }
   }
 
   void _sendRegisteredMessage(TeleDartMessage message) {

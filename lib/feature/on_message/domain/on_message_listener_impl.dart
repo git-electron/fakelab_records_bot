@@ -22,7 +22,7 @@ class OnMessageListenerImpl implements OnMessageListener {
         onContactReceived(message, contact: contact);
       }
     } catch (error) {
-      logger.e('Failed to send message', error: error);
+      logger.e(error);
     }
   }
 }
