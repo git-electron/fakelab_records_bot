@@ -54,6 +54,7 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
         chatId: chat.id,
         messageId: message.messageId,
         parseMode: 'HTML',
+        disableWebPagePreview: true,
         replyMarkup: myOrdersMarkup(showMoreButton: showMoreButton),
       );
     } catch (error) {
