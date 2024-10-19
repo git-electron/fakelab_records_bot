@@ -5,7 +5,10 @@ import 'package:injectable/injectable.dart';
 class IdServiceImpl implements IdService {
   @override
   String generate() {
-    final int microsecondsSinceEpoch = DateTime.now().microsecondsSinceEpoch;
-    return '$microsecondsSinceEpoch';
+    final DateTime future = DateTime(2200);
+    final DateTime now = DateTime.now();
+
+    final int microseconds = future.difference(now).inMicroseconds;
+    return '$microseconds';
   }
 }

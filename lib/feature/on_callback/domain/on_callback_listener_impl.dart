@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
+
 import '../../../core/i18n/app_localization.g.dart';
 import '../feature/on_callback_confirm/domain/on_callback_confirm.dart';
 import '../feature/on_callback_go_to/domain/on_callback_go_to.dart';
@@ -21,6 +23,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final OnCallbackOrder onCallbackOrder;
   final OnCallbackConfirm onCallbackConfirm;
   final OnCallbackOrderMix onCallbackOrderMix;
+  final OnCallbackMyOrders onCallbackMyOrders;
   final OnCallbackOrderBeat onCallbackOrderBeat;
   final OnCallbackOrderMastering onCallbackOrderMastering;
   final OnCallbackOrderMixAndMastering onCallbackOrderMixAndMastering;
@@ -33,6 +36,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.onCallbackOrder,
     required this.onCallbackConfirm,
     required this.onCallbackOrderMix,
+    required this.onCallbackMyOrders,
     required this.onCallbackOrderBeat,
     required this.onCallbackOrderMastering,
     required this.onCallbackOrderMixAndMastering,
@@ -45,8 +49,14 @@ Callback ID: ${callback.id}
 Callback data: ${callback.data}
 Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
 
+    final String? callbackData = callback.data;
+
+    if (callbackData == null) return;
+
+    final callbackAction = callbackData.split(':').first;
+
     try {
-      switch (callback.data?.split(':').first) {
+      switch (callbackAction) {
         case 'order':
           onCallbackOrder(callback);
           break;
@@ -67,6 +77,12 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
           break;
         case 'confirm':
           onCallbackConfirm(callback);
+          break;
+        case 'my_orders':
+          onCallbackMyOrders(
+            callback,
+            showMoreButton: callbackData.split(':').last != 'more',
+          );
           break;
         default:
           teledart.answerCallbackQuery(
