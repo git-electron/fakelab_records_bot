@@ -81,7 +81,7 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
         case 'my_orders':
           onCallbackMyOrders(
             callback,
-            showMoreButton: callbackData.split(':').last == 'more', //TODO: !=
+            showMoreButton: callbackData.split(':').last != 'more',
           );
           break;
         default:

@@ -41,10 +41,23 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
 
       final List<Order>? orders = await getUserOrdersService(
         callback.from.id,
-        showMore: true, //!showMoreButton,
+        showMore: !showMoreButton,
       );
 
-      if (orders == null) return;
+      if (orders == null) {
+        await teledart.answerCallbackQuery(callback.id);
+        await teledart.editMessageText(
+          translations.texts.my_orders_text(
+            orders: translations.errors.orders_empty,
+          ),
+          chatId: chat.id,
+          messageId: message.messageId,
+          parseMode: 'HTML',
+          disableWebPagePreview: true,
+          replyMarkup: myOrdersMarkup(showMoreButton: false),
+        );
+        return;
+      }
 
       await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
@@ -55,7 +68,7 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
         messageId: message.messageId,
         parseMode: 'HTML',
         disableWebPagePreview: true,
-        replyMarkup: myOrdersMarkup(showMoreButton: true), //showMoreButton),
+        replyMarkup: myOrdersMarkup(showMoreButton: showMoreButton),
       );
     } catch (error) {
       logger.e(error);
