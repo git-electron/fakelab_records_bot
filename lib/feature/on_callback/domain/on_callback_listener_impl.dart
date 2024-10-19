@@ -43,7 +43,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   });
 
   @override
-  void call(TeleDartCallbackQuery callback) {
+  void call(TeleDartCallbackQuery callback) async {
     logger.i('''Callback button pressed
 Callback ID: ${callback.id}
 Callback data: ${callback.data}
@@ -81,11 +81,11 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
         case 'my_orders':
           onCallbackMyOrders(
             callback,
-            showMoreButton: callbackData.split(':').last != 'more',
+            showMoreButton: callbackData.split(':').last == 'more', //TODO: !=
           );
           break;
         default:
-          teledart.answerCallbackQuery(
+          await teledart.answerCallbackQuery(
             callback.id,
             text: translations.errors.not_implemented,
             showAlert: true,

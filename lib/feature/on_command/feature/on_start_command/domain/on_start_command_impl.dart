@@ -23,9 +23,9 @@ class OnStartCommandImpl implements OnStartCommand {
   });
 
   @override
-  void call(TeleDartMessage message) {
+  void call(TeleDartMessage message) async {
     try {
-      teledart.sendMessage(
+      await teledart.sendMessage(
         message.chat.id,
         translations.texts.main_menu_text(
           firstName: message.from?.firstName ?? translations.user,

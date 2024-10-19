@@ -52,9 +52,9 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
         orderType: orderType,
       );
 
-      teledart.answerCallbackQuery(callback.id);
+      await teledart.answerCallbackQuery(callback.id);
       if (order == null) {
-        teledart.editMessageText(
+        await teledart.editMessageText(
           translations.texts.order_already_exists_text(
             secondsLeft: initialSeconds,
             secondsLeftPlural:
@@ -68,7 +68,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
         Timer.periodic(const Duration(seconds: 1), (timer) async {
           final int secondsLeft = initialSeconds - timer.tick;
 
-          teledart.editMessageText(
+          await teledart.editMessageText(
             translations.texts.order_already_exists_text(
               secondsLeft: secondsLeft,
               secondsLeftPlural:
@@ -86,7 +86,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
           }
         });
       } else {
-        teledart.editMessageText(
+        await teledart.editMessageText(
           _orderCreatedText(order, initialSeconds),
           chatId: chat.id,
           messageId: message.messageId,
@@ -96,7 +96,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
         Timer.periodic(const Duration(seconds: 1), (timer) async {
           final int secondsLeft = initialSeconds - timer.tick;
 
-          teledart.editMessageText(
+          await teledart.editMessageText(
             _orderCreatedText(order, secondsLeft),
             chatId: chat.id,
             messageId: message.messageId,

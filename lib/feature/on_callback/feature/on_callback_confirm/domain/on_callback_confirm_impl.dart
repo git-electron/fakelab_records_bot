@@ -24,7 +24,7 @@ class OnCallbackConfirmImpl implements OnCallbackConfirm {
   });
 
   @override
-  void call(TeleDartCallbackQuery callback) {
+  void call(TeleDartCallbackQuery callback) async {
     final Message? message = callback.message;
     final String? item = callback.data?.split(':').last;
 
@@ -41,7 +41,7 @@ class OnCallbackConfirmImpl implements OnCallbackConfirm {
           });
     } catch (error) {
       try {
-        teledart.answerCallbackQuery(
+        await teledart.answerCallbackQuery(
           callback.id,
           text: translations.errors.not_implemented,
           showAlert: true,

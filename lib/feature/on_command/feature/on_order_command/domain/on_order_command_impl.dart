@@ -21,9 +21,9 @@ class OnOrderCommandImpl implements OnOrderCommand {
   });
 
   @override
-  void call(TeleDartMessage message) {
+  void call(TeleDartMessage message) async {
     try {
-      teledart.sendMessage(
+      await teledart.sendMessage(
         message.chat.id,
         translations.texts.order_text,
         parseMode: 'HTML',

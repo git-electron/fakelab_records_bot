@@ -40,7 +40,7 @@ class OnContactReceivedImpl implements OnContactReceived {
 
       await createUserRepository(user.id, user: user);
 
-      teledart.sendMessage(
+      await teledart.sendMessage(
         message.chat.id,
         translations.texts.registered_text,
         replyMarkup: ReplyKeyboardRemove(removeKeyboard: true),
@@ -48,14 +48,14 @@ class OnContactReceivedImpl implements OnContactReceived {
 
       await Future.delayed(Duration(seconds: 1));
 
-      _sendRegisteredMessage(message);
+      await _sendRegisteredMessage(message);
     } catch (error) {
       logger.e(error);
     }
   }
 
-  void _sendRegisteredMessage(TeleDartMessage message) {
-    teledart.sendMessage(
+  Future<void> _sendRegisteredMessage(TeleDartMessage message) async {
+    await teledart.sendMessage(
       message.chat.id,
       translations.texts.main_menu_text(
         firstName: message.from?.firstName ?? translations.user,

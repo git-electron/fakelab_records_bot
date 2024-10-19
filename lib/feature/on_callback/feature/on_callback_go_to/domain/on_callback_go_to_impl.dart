@@ -5,19 +5,16 @@ import '../../on_callback_order/domain/on_callback_order.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
-import 'package:teledart/teledart.dart';
 
 @Singleton(as: OnCallbackGoTo)
 class OnCallbackGoToImpl implements OnCallbackGoTo {
   final Logger logger;
-  final TeleDart teledart;
   final Translations translations;
   final OnCallbackOrder onCallbackOrder;
   final OnCallbackMainMenu onCallbackMainMenu;
 
   OnCallbackGoToImpl({
     required this.logger,
-    required this.teledart,
     required this.translations,
     required this.onCallbackOrder,
     required this.onCallbackMainMenu,

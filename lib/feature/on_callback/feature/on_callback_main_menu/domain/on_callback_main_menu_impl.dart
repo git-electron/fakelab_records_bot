@@ -21,7 +21,7 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
   });
 
   @override
-  void call(TeleDartCallbackQuery callback) {
+  void call(TeleDartCallbackQuery callback) async {
     try {
       final Message? message = callback.message;
 
@@ -29,8 +29,8 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
 
       final Chat chat = message.chat;
 
-      teledart.answerCallbackQuery(callback.id);
-      teledart.editMessageText(
+      await teledart.answerCallbackQuery(callback.id);
+      await teledart.editMessageText(
         translations.texts.main_menu_text(firstName: callback.from.firstName),
         chatId: chat.id,
         messageId: message.messageId,

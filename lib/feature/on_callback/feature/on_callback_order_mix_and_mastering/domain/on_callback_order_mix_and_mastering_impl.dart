@@ -25,7 +25,7 @@ class OnCallbackOrderMixAndMasteringImpl
   });
 
   @override
-  void call(TeleDartCallbackQuery callback) {
+  void call(TeleDartCallbackQuery callback) async {
     try {
       final Message? message = callback.message;
 
@@ -37,8 +37,8 @@ class OnCallbackOrderMixAndMasteringImpl
           OrderServiceType.MASTERING.totalCostFormatted;
       final String totalCost = OrderType.MIX_AND_MASTERING.totalCostFormatted;
 
-      teledart.answerCallbackQuery(callback.id);
-      teledart.editMessageText(
+      await teledart.answerCallbackQuery(callback.id);
+      await teledart.editMessageText(
         translations.texts.order_mix_and_mastering_text(
           mixCost: mixCost,
           masteringCost: masteringCost,

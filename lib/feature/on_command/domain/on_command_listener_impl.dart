@@ -52,7 +52,7 @@ Author: @$username (id$userId)''');
 
       if (user == null) {
         logger.w('Unauthorized! Sending authorization message');
-        _sendUnregisteredMessage(message);
+        await _sendUnregisteredMessage(message);
         return;
       }
 
@@ -75,8 +75,8 @@ Author: @$username (id$userId)''');
     }
   }
 
-  void _sendUnregisteredMessage(TeleDartMessage message) {
-    teledart.sendMessage(
+  Future<void> _sendUnregisteredMessage(TeleDartMessage message) async {
+    await teledart.sendMessage(
       message.chat.id,
       translations.texts.start_command_text_unregistered(
         firstName: message.from?.firstName ?? translations.user,
