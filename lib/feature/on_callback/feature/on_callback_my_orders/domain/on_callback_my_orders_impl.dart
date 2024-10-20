@@ -45,7 +45,6 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
       );
 
       if (orders == null) {
-        await teledart.answerCallbackQuery(callback.id);
         await teledart.editMessageText(
           translations.texts.my_orders_text(
             orders: translations.errors.orders_empty,
@@ -56,10 +55,10 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
           disableWebPagePreview: true,
           replyMarkup: myOrdersMarkup(showMoreButton: false),
         );
+        await teledart.answerCallbackQuery(callback.id);
         return;
       }
 
-      await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
         translations.texts.my_orders_text(
           orders: _orders(orders),
@@ -70,6 +69,7 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
         disableWebPagePreview: true,
         replyMarkup: myOrdersMarkup(showMoreButton: showMoreButton),
       );
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }

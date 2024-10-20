@@ -52,7 +52,6 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
         orderType: orderType,
       );
 
-      await teledart.answerCallbackQuery(callback.id);
       if (order == null) {
         await teledart.editMessageText(
           translations.texts.order_already_exists_text(
@@ -110,6 +109,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
           }
         });
       }
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }

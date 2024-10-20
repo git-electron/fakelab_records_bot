@@ -31,7 +31,6 @@ class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
       final Chat chat = message.chat;
       final String totalCost = OrderType.MASTERING.totalCostFormatted;
 
-      await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
         translations.texts.order_mastering_text(totalCost: totalCost),
         chatId: chat.id,
@@ -39,6 +38,7 @@ class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
         parseMode: 'HTML',
         replyMarkup: orderMasteringMarkup(),
       );
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }

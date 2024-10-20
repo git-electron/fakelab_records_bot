@@ -30,7 +30,6 @@ class OnCallbackOrderImpl implements OnCallbackOrder {
 
       final Chat chat = message.chat;
 
-      await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
         translations.texts.order_text,
         chatId: chat.id,
@@ -38,6 +37,7 @@ class OnCallbackOrderImpl implements OnCallbackOrder {
         parseMode: 'HTML',
         replyMarkup: orderMarkup(),
       );
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }

@@ -29,7 +29,6 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
 
       final Chat chat = message.chat;
 
-      await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
         translations.texts.main_menu_text(firstName: callback.from.firstName),
         chatId: chat.id,
@@ -37,6 +36,7 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
         parseMode: 'HTML',
         replyMarkup: mainMenuMarkup(),
       );
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }

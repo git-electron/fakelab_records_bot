@@ -31,7 +31,6 @@ class OnCallbackOrderMixImpl implements OnCallbackOrderMix {
       final Chat chat = message.chat;
       final String totalCost = OrderType.MIX.totalCostFormatted;
 
-      await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
         translations.texts.order_mix_text(totalCost: totalCost),
         chatId: chat.id,
@@ -39,6 +38,7 @@ class OnCallbackOrderMixImpl implements OnCallbackOrderMix {
         parseMode: 'HTML',
         replyMarkup: orderMixMarkup(),
       );
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }

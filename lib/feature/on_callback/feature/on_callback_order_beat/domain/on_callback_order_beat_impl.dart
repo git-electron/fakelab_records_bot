@@ -32,7 +32,6 @@ class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
       final Chat chat = message.chat;
       final String totalCost = OrderType.BEAT.totalCostFormatted;
 
-      await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
         translations.texts.order_beat_text(totalCost: totalCost),
         chatId: chat.id,
@@ -40,6 +39,7 @@ class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
         parseMode: 'HTML',
         replyMarkup: orderBeatMarkup(),
       );
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }

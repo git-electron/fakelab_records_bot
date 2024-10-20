@@ -37,7 +37,6 @@ class OnCallbackOrderMixAndMasteringImpl
           OrderServiceType.MASTERING.totalCostFormatted;
       final String totalCost = OrderType.MIX_AND_MASTERING.totalCostFormatted;
 
-      await teledart.answerCallbackQuery(callback.id);
       await teledart.editMessageText(
         translations.texts.order_mix_and_mastering_text(
           mixCost: mixCost,
@@ -49,6 +48,7 @@ class OnCallbackOrderMixAndMasteringImpl
         parseMode: 'HTML',
         replyMarkup: orderMixAndMasteringMarkup(),
       );
+      await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
       logger.e(error);
     }
