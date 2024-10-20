@@ -1,3 +1,6 @@
+import 'package:fakelab_records_bot/feature/on_command/feature/on_orders_command/domain/on_orders_command.dart';
+import 'package:fakelab_records_bot/feature/on_command/feature/on_support_command/domain/on_support_command.dart';
+
 import '../../../core/domain/model/user_model.dart';
 import '../../../core/i18n/app_localization.g.dart';
 import '../data/repository/get_user_repository.dart';
@@ -20,6 +23,8 @@ class OnCommandListenerImpl implements OnCommandListener {
   final OnMenuCommand onMenuCommand;
   final OnStartCommand onStartCommand;
   final OnOrderCommand onOrderCommand;
+  final OnOrdersCommand onOrdersCommand;
+  final OnSupportCommand onSupportCommand;
   final GetUserRepository getUserRepository;
 
   OnCommandListenerImpl({
@@ -29,6 +34,8 @@ class OnCommandListenerImpl implements OnCommandListener {
     required this.onMenuCommand,
     required this.onStartCommand,
     required this.onOrderCommand,
+    required this.onOrdersCommand,
+    required this.onSupportCommand,
     required this.getUserRepository,
   });
 
@@ -65,6 +72,12 @@ Author: @$username (id$userId)''');
           break;
         case Constants.orderCommand:
           onOrderCommand(message);
+          break;
+        case Constants.ordersCommand:
+          onOrdersCommand(message);
+          break;
+        case Constants.supportCommand:
+          onSupportCommand(message);
           break;
         default:
           logger.w('Invalid command: $command');
