@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
+
 import '../../../../../core/i18n/app_localization.g.dart';
 import 'on_callback_go_to.dart';
 import '../../on_callback_main_menu/domain/on_callback_main_menu.dart';
@@ -11,12 +13,14 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
   final Logger logger;
   final Translations translations;
   final OnCallbackOrder onCallbackOrder;
+  final OnCallbackSupport onCallbackSupport;
   final OnCallbackMainMenu onCallbackMainMenu;
 
   OnCallbackGoToImpl({
     required this.logger,
     required this.translations,
     required this.onCallbackOrder,
+    required this.onCallbackSupport,
     required this.onCallbackMainMenu,
   });
 
@@ -34,6 +38,9 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
           break;
         case 'order':
           onCallbackOrder(callback);
+          break;
+        case 'support':
+          onCallbackSupport(callback);
           break;
         default:
           onCallbackMainMenu(callback);

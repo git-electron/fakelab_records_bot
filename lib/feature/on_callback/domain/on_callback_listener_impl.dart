@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
 
@@ -20,6 +21,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final Logger logger;
   final TeleDart teledart;
   final Translations translations;
+  final OnCallbackFaq onCallbackFaq;
   final OnCallbackGoTo onCallbackGoTo;
   final OnCallbackOrder onCallbackOrder;
   final OnCallbackConfirm onCallbackConfirm;
@@ -34,6 +36,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.logger,
     required this.teledart,
     required this.translations,
+    required this.onCallbackFaq,
     required this.onCallbackGoTo,
     required this.onCallbackOrder,
     required this.onCallbackConfirm,
@@ -89,6 +92,9 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
           break;
         case 'support':
           onCallbackSupport(callback);
+          break;
+        case 'faq':
+          onCallbackFaq(callback);
           break;
         default:
           await teledart.answerCallbackQuery(

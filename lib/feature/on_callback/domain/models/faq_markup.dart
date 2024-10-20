@@ -3,27 +3,23 @@ import 'package:injectable/injectable.dart';
 import 'package:teledart/model.dart';
 
 @singleton
-class SupportMarkup {
+class FaqMarkup {
   final Translations translations;
 
-  SupportMarkup({required this.translations});
+  FaqMarkup({required this.translations});
 
   InlineKeyboardMarkup call() {
-    final InlineKeyboardButton faq = InlineKeyboardButton(
-      text: translations.buttons.faq,
-      callbackData: 'faq',
-    );
     final InlineKeyboardButton callSupport = InlineKeyboardButton(
       text: translations.buttons.call_support,
       callbackData: 'call_support',
     );
     final InlineKeyboardButton goBack = InlineKeyboardButton(
       text: translations.buttons.go_back,
-      callbackData: 'go_to:main_menu',
+      callbackData: 'go_to:support',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
-      [faq, callSupport],
+      [callSupport],
       [goBack],
     ];
 

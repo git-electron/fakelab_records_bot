@@ -11,8 +11,8 @@ class MyOrdersMarkup {
   InlineKeyboardMarkup call({
     required bool showMoreButton,
   }) {
-    final InlineKeyboardButton goToMainMenu = InlineKeyboardButton(
-      text: translations.buttons.go_to_main_menu,
+    final InlineKeyboardButton goBack = InlineKeyboardButton(
+      text: translations.buttons.go_back,
       callbackData: 'go_to:main_menu',
     );
     final InlineKeyboardButton showMore = InlineKeyboardButton(
@@ -21,7 +21,7 @@ class MyOrdersMarkup {
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
-      [goToMainMenu, if (showMoreButton) showMore],
+      [goBack, if (showMoreButton) showMore],
     ];
 
     final InlineKeyboardMarkup markup = InlineKeyboardMarkup(
