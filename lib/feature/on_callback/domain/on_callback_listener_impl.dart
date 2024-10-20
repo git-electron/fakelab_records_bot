@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
 
 import '../../../core/i18n/app_localization.g.dart';
 import '../feature/on_callback_confirm/domain/on_callback_confirm.dart';
@@ -22,6 +23,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final OnCallbackGoTo onCallbackGoTo;
   final OnCallbackOrder onCallbackOrder;
   final OnCallbackConfirm onCallbackConfirm;
+  final OnCallbackSupport onCallbackSupport;
   final OnCallbackOrderMix onCallbackOrderMix;
   final OnCallbackMyOrders onCallbackMyOrders;
   final OnCallbackOrderBeat onCallbackOrderBeat;
@@ -35,6 +37,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.onCallbackGoTo,
     required this.onCallbackOrder,
     required this.onCallbackConfirm,
+    required this.onCallbackSupport,
     required this.onCallbackOrderMix,
     required this.onCallbackMyOrders,
     required this.onCallbackOrderBeat,
@@ -83,6 +86,9 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
             callback,
             showMoreButton: callbackData.split(':').last != 'more',
           );
+          break;
+        case 'support':
+          onCallbackSupport(callback);
           break;
         default:
           await teledart.answerCallbackQuery(
