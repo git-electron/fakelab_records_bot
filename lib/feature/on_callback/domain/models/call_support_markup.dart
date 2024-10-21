@@ -9,13 +9,13 @@ class CallSupportMarkup {
   CallSupportMarkup({required this.translations});
 
   InlineKeyboardMarkup call() {
-    final InlineKeyboardButton cancel = InlineKeyboardButton(
-      text: translations.buttons.cancel,
+    final InlineKeyboardButton goGack = InlineKeyboardButton(
+      text: translations.buttons.go_back,
       callbackData: 'go_to:support',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
-      [cancel],
+      [goGack],
     ];
 
     final InlineKeyboardMarkup markup = InlineKeyboardMarkup(

@@ -1,18 +1,20 @@
 import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
+import 'package:fakelab_records_bot/core/domain/service/support_service.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/data/create_support_request_repository.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/data/get_user_support_requests_repository.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/service/create_suport_request_service.dart';
+import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
-class CreateSuportRequestServiceImpl implements CreateSuportRequestService {
+@Singleton(as: CreateSupportRequestService)
+class CreateSuportRequestServiceImpl implements CreateSupportRequestService {
   final Logger logger;
+  final SupportService supportService;
   final CreateSupportRequestRepository createSupportRequestRepository;
-  final GetUserSupportRequestsRepository getUserSupportRequestsRepository;
 
   CreateSuportRequestServiceImpl({
     required this.logger,
+    required this.supportService,
     required this.createSupportRequestRepository,
-    required this.getUserSupportRequestsRepository,
   });
 
   @override
@@ -23,10 +25,11 @@ class CreateSuportRequestServiceImpl implements CreateSuportRequestService {
         message: null,
       );
 
-      final SupportRequest? userSupportRequest =
-          await getUserSupportRequestsRepository(userId);
+      final bool hasUserSupportRequest = supportService.supportRequests
+          .where((SupportRequest request) => request.chatId == userId)
+          .isNotEmpty;
 
-      if (userSupportRequest != null) {
+      if (hasUserSupportRequest) {
         return null;
       }
 

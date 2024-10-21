@@ -33,16 +33,15 @@ class SupportServiceImpl implements SupportService {
 Path: $path
 Data: $data''');
 
-        if (data == null) return;
+        if (data == null) {
+          _supportRequests = [];
+          return;
+        }
 
         final List<SupportRequest> requests = [];
 
-        for (MapEntry<String, dynamic> requestEntry in data.entries) {
-          final Map<String, String?> requestJson = {
-            requestEntry.key: requestEntry.value as String?,
-          };
+        for (var requestJson in data.values) {
           final SupportRequest request = SupportRequest.fromJson(requestJson);
-
           requests.add(request);
         }
 
