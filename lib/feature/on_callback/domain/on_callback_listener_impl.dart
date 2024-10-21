@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/on_callback_call_support.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
@@ -29,6 +30,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final OnCallbackOrderMix onCallbackOrderMix;
   final OnCallbackMyOrders onCallbackMyOrders;
   final OnCallbackOrderBeat onCallbackOrderBeat;
+  final OnCallbackCallSupport onCallbackCallSupport;
   final OnCallbackOrderMastering onCallbackOrderMastering;
   final OnCallbackOrderMixAndMastering onCallbackOrderMixAndMastering;
 
@@ -44,6 +46,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.onCallbackOrderMix,
     required this.onCallbackMyOrders,
     required this.onCallbackOrderBeat,
+    required this.onCallbackCallSupport,
     required this.onCallbackOrderMastering,
     required this.onCallbackOrderMixAndMastering,
   });
@@ -95,6 +98,9 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
           break;
         case 'faq':
           onCallbackFaq(callback);
+          break;
+        case 'call_support':
+          onCallbackCallSupport(callback);
           break;
         default:
           await teledart.answerCallbackQuery(
