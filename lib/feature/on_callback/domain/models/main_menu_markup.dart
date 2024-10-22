@@ -10,7 +10,7 @@ class MainMenuMarkup {
 
   MainMenuMarkup({required this.translations});
 
-  InlineKeyboardMarkup call() {
+  InlineKeyboardMarkup call(int userId) {
     final InlineKeyboardButton openApp = InlineKeyboardButton(
       text: translations.buttons.open_app,
       url: Constants.webAppUrl,
@@ -31,12 +31,18 @@ class MainMenuMarkup {
       text: translations.buttons.support,
       callbackData: Constants.support,
     );
+    final InlineKeyboardButton admin = InlineKeyboardButton(
+      text: translations.buttons.admin,
+      callbackData: Constants.admin,
+    );
+
+    final bool isAdmin = Constants.adminAccountIds.contains(userId);
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
       [openApp],
       [order],
       [myOrders, myBookings],
-      [support],
+      [if(!isAdmin) support, if(isAdmin) admin],
     ];
 
     final InlineKeyboardMarkup markup = InlineKeyboardMarkup(

@@ -57,13 +57,15 @@ class OnContactReceivedImpl implements OnContactReceived {
   }
 
   Future<void> _sendRegisteredMessage(TeleDartMessage message) async {
+    if (message.from == null) return;
+
     await teledart.sendMessage(
       message.chat.id,
       translations.texts.main_menu_text(
         firstName: message.from?.firstName ?? translations.user,
       ),
       parseMode: Constants.parseMode,
-      replyMarkup: mainMenuMarkup(),
+      replyMarkup: mainMenuMarkup(message.from!.id),
     );
   }
 }

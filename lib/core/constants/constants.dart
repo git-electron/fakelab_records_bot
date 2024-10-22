@@ -24,6 +24,7 @@ class Constants {
   static const String cancel = 'cancel';
   static const String goTo = 'go_to';
   static const String more = 'more';
+  static const String admin = 'admin';
 
   static const List<int> adminAccountIds = [
     //265685890, // @raimeeee

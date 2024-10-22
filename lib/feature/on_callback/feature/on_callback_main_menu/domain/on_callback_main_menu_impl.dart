@@ -36,7 +36,7 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
         chatId: chat.id,
         messageId: message.messageId,
         parseMode: Constants.parseMode,
-        replyMarkup: mainMenuMarkup(),
+        replyMarkup: mainMenuMarkup(callback.from.id),
       );
       await teledart.answerCallbackQuery(callback.id);
     } catch (error) {
