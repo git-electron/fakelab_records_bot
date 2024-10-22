@@ -406,6 +406,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.16.1"
+  jaspr_builder:
+    dependency: "direct dev"
+    description:
+      name: jaspr_builder
+      sha256: d37877ddbd1f8a2a3c1e68a71b65416b470f78621a40c1fb5052f9559174220b
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.16.1"
   jose:
     dependency: transitive
     description:
