@@ -22,6 +22,7 @@ class ChangeSupportRequestStatusRepositoryImpl
   @override
   Future<SupportRequest?> call(
     int chatId, {
+    required int adminId,
     required SupportRequestStatus status,
   }) async {
     try {
@@ -29,7 +30,10 @@ class ChangeSupportRequestStatusRepositoryImpl
       final SupportRequest request = requests
           .where((SupportRequest request) => request.chatId == chatId)
           .first;
-      final SupportRequest requestWithStatus = request.copyWith(status: status);
+      final SupportRequest requestWithStatus = request.copyWith(
+        status: status,
+        adminId: adminId,
+      );
 
       final String path = 'support_requests/$chatId';
       final Map<String, dynamic> data = requestWithStatus.toJson();

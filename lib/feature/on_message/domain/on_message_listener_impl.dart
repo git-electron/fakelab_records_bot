@@ -32,11 +32,11 @@ class OnMessageListenerImpl implements OnMessageListener {
 
       final List<SupportRequest> supportRequests =
           supportService.supportRequests;
-      final bool hasUserSupportRequest = supportRequests
+      final bool hasUserSupportRequestWithoutMessage = supportRequests
           .where((SupportRequest request) =>
               request.chatId == message.chat.id && request.message == null)
           .isNotEmpty;
-      if (hasUserSupportRequest) {
+      if (hasUserSupportRequestWithoutMessage) {
         return onSupportRequestReceived(message);
       }
     } catch (error) {

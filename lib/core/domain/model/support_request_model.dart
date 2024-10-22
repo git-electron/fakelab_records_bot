@@ -12,6 +12,7 @@ class SupportRequest with _$SupportRequest {
     required DateTime dateCreated,
     required SupportRequestStatus status,
     String? message,
+    int? adminId,
   }) = _SupportRequest;
 
   factory SupportRequest.fromJson(Map<String, dynamic> json) => _$SupportRequestFromJson(json);

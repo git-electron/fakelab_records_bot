@@ -46,7 +46,7 @@ class OnSupportRequestApplyCommandImpl implements OnSupportRequestApplyCommand {
       if (chatId == null) return;
 
       final SupportRequest? request =
-          await setSupportRequestInProgressService(chatId);
+          await setSupportRequestInProgressService(chatId, adminId: userId);
 
       if (request == null) {
         final SupportRequest currentRequest = supportService.supportRequests
