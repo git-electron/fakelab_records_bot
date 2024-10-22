@@ -31,9 +31,9 @@ class MainMenuMarkup {
       text: translations.buttons.support,
       callbackData: Constants.support,
     );
-    final InlineKeyboardButton admin = InlineKeyboardButton(
-      text: translations.buttons.admin,
-      callbackData: Constants.admin,
+    final InlineKeyboardButton adminAccess = InlineKeyboardButton(
+      text: translations.admin.buttons.admin_access,
+      callbackData: Constants.adminAccess,
     );
 
     final bool isAdmin = Constants.adminAccountIds.contains(userId);
@@ -42,7 +42,7 @@ class MainMenuMarkup {
       [openApp],
       [order],
       [myOrders, myBookings],
-      [if(!isAdmin) support, if(isAdmin) admin],
+      [if(!isAdmin) support, if(isAdmin) adminAccess],
     ];
 
     final InlineKeyboardMarkup markup = InlineKeyboardMarkup(

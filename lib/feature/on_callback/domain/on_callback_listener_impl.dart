@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/core/constants/constants.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_admin_access/domain/on_callback_admin_access.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/on_callback_call_support.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
@@ -31,6 +32,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final OnCallbackOrderMix onCallbackOrderMix;
   final OnCallbackMyOrders onCallbackMyOrders;
   final OnCallbackOrderBeat onCallbackOrderBeat;
+  final OnCallbackAdminAccess onCallbackAdminAccess;
   final OnCallbackCallSupport onCallbackCallSupport;
   final OnCallbackOrderMastering onCallbackOrderMastering;
   final OnCallbackOrderMixAndMastering onCallbackOrderMixAndMastering;
@@ -47,6 +49,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.onCallbackOrderMix,
     required this.onCallbackMyOrders,
     required this.onCallbackOrderBeat,
+    required this.onCallbackAdminAccess,
     required this.onCallbackCallSupport,
     required this.onCallbackOrderMastering,
     required this.onCallbackOrderMixAndMastering,
@@ -102,6 +105,9 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
           break;
         case Constants.callSupport:
           onCallbackCallSupport(callback);
+          break;
+        case Constants.adminAccess:
+          onCallbackAdminAccess(callback);
           break;
         default:
           await teledart.answerCallbackQuery(
