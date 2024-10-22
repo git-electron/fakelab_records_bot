@@ -1,13 +1,12 @@
-import '../../../../../core/constants/constants.dart';
-import 'models/order_type.dart';
-
-import '../../../../../core/i18n/app_localization.g.dart';
-import 'on_callback_confirm.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import 'models/order_type.dart';
+import 'on_callback_confirm.dart';
 import 'on_confirm_order.dart';
 
 @Singleton(as: OnCallbackConfirm)

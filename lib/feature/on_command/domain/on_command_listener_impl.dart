@@ -1,21 +1,19 @@
-import 'package:fakelab_records_bot/feature/on_command/feature/on_support_request_apply_command/domain/on_support_request_apply_command.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_support_request_complete_command/domain/on_support_request_complete_command.dart';
+import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
+import 'package:teledart/model.dart' hide User;
+import 'package:teledart/teledart.dart';
 
-import '../feature/on_orders_command/domain/on_orders_command.dart';
-import '../feature/on_support_command/domain/on_support_command.dart';
-
+import '../../../core/constants/constants.dart';
 import '../../../core/domain/model/user_model.dart';
 import '../../../core/i18n/app_localization.g.dart';
 import '../data/repository/get_user_repository.dart';
 import '../feature/on_menu_command/domain/on_menu_command.dart';
 import '../feature/on_order_command/domain/on_order_command.dart';
-import 'package:teledart/teledart.dart';
-
-import '../../../core/constants/constants.dart';
+import '../feature/on_orders_command/domain/on_orders_command.dart';
 import '../feature/on_start_command/domain/on_start_command.dart';
-import 'package:logger/logger.dart';
-import 'package:teledart/model.dart' hide User;
-import 'package:injectable/injectable.dart';
+import '../feature/on_support_command/domain/on_support_command.dart';
+import '../feature/on_support_request_apply_command/domain/on_support_request_apply_command.dart';
+import '../feature/on_support_request_complete_command/domain/on_support_request_complete_command.dart';
 import 'on_command_listener.dart';
 
 @Singleton(as: OnCommandListener)

@@ -1,3 +1,8 @@
+import 'package:injectable/injectable.dart' hide Order;
+import 'package:logger/logger.dart';
+import 'package:teledart/model.dart';
+import 'package:teledart/teledart.dart';
+
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/extensions/date_time_extensions.dart';
 import '../../../../../core/extensions/double_extensions.dart';
@@ -5,14 +10,9 @@ import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../domain/models/my_orders_markup.dart';
 import '../../on_callback_confirm/domain/models/order_model.dart';
 import '../../on_callback_confirm/domain/models/order_status.dart';
+import '../../on_callback_confirm/domain/models/order_type.dart';
 import 'on_callback_my_orders.dart';
 import 'service/get_user_orders_service.dart';
-import 'package:injectable/injectable.dart' hide Order;
-import 'package:logger/logger.dart';
-import 'package:teledart/model.dart';
-import 'package:teledart/teledart.dart';
-
-import '../../on_callback_confirm/domain/models/order_type.dart';
 
 @Singleton(as: OnCallbackMyOrders)
 class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {

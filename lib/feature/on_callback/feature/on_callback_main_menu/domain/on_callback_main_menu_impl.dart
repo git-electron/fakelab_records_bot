@@ -1,12 +1,12 @@
-import '../../../../../core/constants/constants.dart';
-
-import '../../../../../core/i18n/app_localization.g.dart';
-import '../../../domain/models/main_menu_markup.dart';
-import 'on_callback_main_menu.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../domain/models/main_menu_markup.dart';
+import 'on_callback_main_menu.dart';
 
 @Singleton(as: OnCallbackMainMenu)
 class OnCallbackMainMenuImpl implements OnCallbackMainMenu {

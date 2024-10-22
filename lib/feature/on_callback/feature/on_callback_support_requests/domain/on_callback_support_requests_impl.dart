@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/core/domain/model/support_request_status.dart';
+import '../../../../../core/domain/model/support_request_status.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/domain/model/support_request_model.dart';

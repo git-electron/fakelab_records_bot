@@ -1,12 +1,12 @@
-import '../../../../../core/constants/constants.dart';
-
-import '../../../../../core/i18n/app_localization.g.dart';
-import '../../../../on_callback/domain/models/main_menu_markup.dart';
-import 'on_menu_command.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../../on_callback/domain/models/main_menu_markup.dart';
+import 'on_menu_command.dart';
 
 @Singleton(as: OnMenuCommand)
 class OnMenuCommandImpl implements OnMenuCommand {

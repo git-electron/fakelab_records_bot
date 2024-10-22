@@ -1,5 +1,6 @@
-import 'support_request_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'support_request_status.dart';
 
 part 'support_request_model.freezed.dart';
 part 'support_request_model.g.dart';

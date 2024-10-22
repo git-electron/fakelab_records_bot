@@ -1,10 +1,11 @@
-import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
-import 'package:fakelab_records_bot/core/domain/model/support_request_status.dart';
-import 'package:fakelab_records_bot/core/domain/service/support_service.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_support_request_apply_command/data/repository/change_support_request_status_repository.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+
+import '../../../../../../core/domain/model/support_request_model.dart';
+import '../../../../../../core/domain/model/support_request_status.dart';
+import '../../../../../../core/domain/service/support_service.dart';
+import 'change_support_request_status_repository.dart';
 
 @Singleton(as: ChangeSupportRequestStatusRepository)
 class ChangeSupportRequestStatusRepositoryImpl

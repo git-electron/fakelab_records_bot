@@ -1,11 +1,12 @@
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/i18n/app_localization.g.dart';
-import '../data/add_message_to_support_request_repository.dart';
-import 'on_support_request_received.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../data/add_message_to_support_request_repository.dart';
+import 'on_support_request_received.dart';
 
 @Singleton(as: OnSupportRequestReceived)
 class OnSupportRequestReceivedImpl implements OnSupportRequestReceived {

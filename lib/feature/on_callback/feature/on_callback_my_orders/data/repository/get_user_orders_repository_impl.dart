@@ -1,8 +1,9 @@
-import '../../../on_callback_confirm/domain/models/order_model.dart';
-import 'get_user_orders_repository.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../../../on_callback_confirm/domain/models/order_model.dart';
+import 'get_user_orders_repository.dart';
 
 @Singleton(as: GetUserOrdersRepository)
 class GetUserOrdersRepositoryImpl implements GetUserOrdersRepository {

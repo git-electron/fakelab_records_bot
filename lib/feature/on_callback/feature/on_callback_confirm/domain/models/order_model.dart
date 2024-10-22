@@ -1,7 +1,7 @@
-import '../../../../../../core/domain/model/user_model.dart';
-import 'order_filters_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../../core/domain/model/user_model.dart';
+import 'order_filters_model.dart';
 import 'order_service_model.dart';
 import 'order_status.dart';
 import 'order_status_history_item_model.dart';

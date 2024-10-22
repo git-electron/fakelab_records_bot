@@ -1,9 +1,10 @@
-import '../../../../../core/domain/model/support_request_model.dart';
-import '../../../../../core/domain/service/support_service.dart';
-import 'add_message_to_support_request_repository.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+
+import '../../../../../core/domain/model/support_request_model.dart';
+import '../../../../../core/domain/service/support_service.dart';
+import 'add_message_to_support_request_repository.dart';
 
 @Singleton(as: AddMessageToSupportRequestRepository)
 class AddMessageToSupportRequestRepositoryImpl

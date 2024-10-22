@@ -1,13 +1,13 @@
-import '../../../../../core/constants/constants.dart';
-
-import '../../../../../core/i18n/app_localization.g.dart';
-import '../../../domain/models/order_mastering_markup.dart';
-import '../../on_callback_confirm/domain/models/order_type.dart';
-import 'on_callback_order_mastering.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../domain/models/order_mastering_markup.dart';
+import '../../on_callback_confirm/domain/models/order_type.dart';
+import 'on_callback_order_mastering.dart';
 
 @Singleton(as: OnCallbackOrderMastering)
 class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {

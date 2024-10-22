@@ -1,7 +1,8 @@
-import 'package:fakelab_records_bot/feature/on_command/feature/on_support_request_complete_command/data/repository/delete_support_request_repository.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+
+import 'delete_support_request_repository.dart';
 
 @Singleton(as: DeleteSupportRequestRepository)
 class DeleteSupportRequestRepositoryImpl

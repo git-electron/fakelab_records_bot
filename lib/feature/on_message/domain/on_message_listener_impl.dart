@@ -1,6 +1,6 @@
-import 'package:fakelab_records_bot/core/domain/model/support_request_status.dart';
-import 'package:fakelab_records_bot/feature/on_message/feature/on_support_message_sent_to_admin/domain/on_support_message_sent_to_admin.dart';
-import 'package:fakelab_records_bot/feature/on_message/feature/on_support_message_sent_to_user/domain/on_support_message_sent_to_user.dart';
+import '../../../core/domain/model/support_request_status.dart';
+import '../feature/on_support_message_sent_to_admin/domain/on_support_message_sent_to_admin.dart';
+import '../feature/on_support_message_sent_to_user/domain/on_support_message_sent_to_user.dart';
 
 import '../../../core/domain/model/support_request_model.dart';
 import '../../../core/domain/service/support_service.dart';
