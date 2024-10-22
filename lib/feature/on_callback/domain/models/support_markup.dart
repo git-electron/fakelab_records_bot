@@ -10,7 +10,7 @@ class SupportMarkup {
 
   SupportMarkup({required this.translations});
 
-  InlineKeyboardMarkup call() {
+  InlineKeyboardMarkup call(int userId) {
     final InlineKeyboardButton faq = InlineKeyboardButton(
       text: translations.buttons.faq,
       callbackData: Constants.faq,
@@ -24,8 +24,10 @@ class SupportMarkup {
       callbackData: '${Constants.goTo}:${Constants.mainMenu}',
     );
 
+    final bool isAdmin = Constants.adminAccountIds.contains(userId);
+
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
-      [faq, callSupport],
+      [faq, if (!isAdmin) callSupport],
       [goBack],
     ];
 

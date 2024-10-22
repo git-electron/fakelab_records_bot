@@ -42,7 +42,8 @@ class MainMenuMarkup {
       [openApp],
       [order],
       [myOrders, myBookings],
-      [if(!isAdmin) support, if(isAdmin) adminAccess],
+      [support],
+      if (isAdmin) [adminAccess],
     ];
 
     final InlineKeyboardMarkup markup = InlineKeyboardMarkup(

@@ -36,7 +36,7 @@ class OnCallbackFaqImpl implements OnCallbackFaq {
         chatId: chat.id,
         messageId: message.messageId,
         parseMode: Constants.parseMode,
-        replyMarkup: faqMarkup(),
+        replyMarkup: faqMarkup(callback.from.id),
         disableWebPagePreview: true,
       );
       await teledart.answerCallbackQuery(callback.id);

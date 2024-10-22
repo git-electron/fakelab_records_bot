@@ -25,11 +25,13 @@ class OnSupportCommandImpl implements OnSupportCommand {
   @override
   void call(TeleDartMessage message) async {
     try {
+      if (message.from == null) return;
+
       await teledart.sendMessage(
         message.chat.id,
         translations.texts.support_text,
         parseMode: Constants.parseMode,
-        replyMarkup: supportMarkup(),
+        replyMarkup: supportMarkup(message.from!.id),
       );
     } catch (error) {
       logger.e(error);

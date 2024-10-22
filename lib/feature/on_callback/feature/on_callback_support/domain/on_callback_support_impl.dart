@@ -35,7 +35,7 @@ class OnCallbackSupportImpl implements OnCallbackSupport {
         chatId: chat.id,
         messageId: message.messageId,
         parseMode: Constants.parseMode,
-        replyMarkup: supportMarkup(),
+        replyMarkup: supportMarkup(callback.from.id),
       );
       await teledart.answerCallbackQuery(callback.id);
     } catch (error) {

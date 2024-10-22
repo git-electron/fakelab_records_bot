@@ -10,7 +10,7 @@ class FaqMarkup {
 
   FaqMarkup({required this.translations});
 
-  InlineKeyboardMarkup call() {
+  InlineKeyboardMarkup call(int userId) {
     final InlineKeyboardButton callSupport = InlineKeyboardButton(
       text: translations.buttons.call_support,
       callbackData: Constants.callSupport,
@@ -20,8 +20,10 @@ class FaqMarkup {
       callbackData: '${Constants.goTo}:${Constants.support}',
     );
 
+    final bool isAdmin = Constants.adminAccountIds.contains(userId);
+
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
-      [callSupport],
+      if(!isAdmin) [callSupport],
       [goBack],
     ];
 
