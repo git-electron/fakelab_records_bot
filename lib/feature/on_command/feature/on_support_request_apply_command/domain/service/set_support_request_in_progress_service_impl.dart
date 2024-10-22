@@ -21,7 +21,11 @@ class SetSupportRequestInProgressServiceImpl
   });
 
   @override
-  Future<SupportRequest?> call(int chatId, {required int adminId}) async {
+  Future<SupportRequest?> call(
+    int chatId, {
+    required int adminId,
+    required String? adminUsername,
+  }) async {
     try {
       final bool isThereAnotherInProgressRequest = supportService
           .supportRequests
@@ -34,6 +38,7 @@ class SetSupportRequestInProgressServiceImpl
       return await changeSupportRequestStatusRepository(
         chatId,
         adminId: adminId,
+        adminUsername: adminUsername,
         status: SupportRequestStatus.IN_PROGRESS,
       );
     } catch (error) {

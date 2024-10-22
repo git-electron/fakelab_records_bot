@@ -55,10 +55,7 @@ class OnCallbackSupportRequestsImpl implements OnCallbackSupportRequests {
   }
 
   String get _requests {
-    final List<SupportRequest> requests = supportService.supportRequests
-        .where((SupportRequest request) =>
-            request.status == SupportRequestStatus.REQUEST)
-        .toList();
+    final List<SupportRequest> requests = supportService.supportRequests;
 
     if (requests.isEmpty) return translations.admin.errors.requests_empty;
 
@@ -66,9 +63,25 @@ class OnCallbackSupportRequestsImpl implements OnCallbackSupportRequests {
       return translations.admin.cards.support_request.card(
         chatId: request.chatId,
         dateCreated: request.dateCreated.dateFormatted,
+        status: _requestStatus(request.status),
+        admin: request.adminId != null
+            ? translations.admin.cards.support_request.admin(
+                adminUsername: request.adminUsername ?? 'null',
+                adminId: request.adminId ?? 'null',
+              )
+            : translations.admin.cards.support_request.no_admin,
         message: request.message ??
             translations.admin.cards.support_request.no_message,
       );
     }).join('\n\n');
+  }
+
+  String _requestStatus(SupportRequestStatus requestStatus) {
+    return switch (requestStatus) {
+      SupportRequestStatus.REQUEST =>
+        translations.admin.cards.support_request.status.request,
+      SupportRequestStatus.IN_PROGRESS =>
+        translations.admin.cards.support_request.status.in_progress,
+    };
   }
 }

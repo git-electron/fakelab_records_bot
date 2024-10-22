@@ -13,6 +13,7 @@ class SupportRequest with _$SupportRequest {
     required SupportRequestStatus status,
     String? message,
     int? adminId,
+    String? adminUsername,
   }) = _SupportRequest;
 
   factory SupportRequest.fromJson(Map<String, dynamic> json) => _$SupportRequestFromJson(json);

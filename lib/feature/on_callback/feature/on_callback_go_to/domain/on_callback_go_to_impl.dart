@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support_requests/domain/on_callback_support_requests.dart';
+
 import '../../../../../core/constants/constants.dart';
 import '../../on_callback_admin_access/domain/on_callback_admin_access.dart';
 import '../../on_callback_support/domain/on_callback_support.dart';
@@ -18,6 +20,7 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
   final OnCallbackSupport onCallbackSupport;
   final OnCallbackMainMenu onCallbackMainMenu;
   final OnCallbackAdminAccess onCallbackAdminAccess;
+  final OnCallbackSupportRequests onCallbackSupportRequests;
 
   OnCallbackGoToImpl({
     required this.logger,
@@ -26,6 +29,7 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
     required this.onCallbackSupport,
     required this.onCallbackMainMenu,
     required this.onCallbackAdminAccess,
+    required this.onCallbackSupportRequests,
   });
 
   @override
@@ -48,6 +52,9 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
           break;
         case Constants.adminAccess:
           onCallbackAdminAccess(callback);
+          break;
+        case Constants.supportRequests:
+          onCallbackSupportRequests(callback);
           break;
         default:
           onCallbackMainMenu(callback);

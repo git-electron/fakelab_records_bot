@@ -45,8 +45,11 @@ class OnSupportRequestApplyCommandImpl implements OnSupportRequestApplyCommand {
 
       if (chatId == null) return;
 
-      final SupportRequest? request =
-          await setSupportRequestInProgressService(chatId, adminId: userId);
+      final SupportRequest? request = await setSupportRequestInProgressService(
+        chatId,
+        adminId: userId,
+        adminUsername: message.from!.username,
+      );
 
       if (request == null) {
         final SupportRequest currentRequest = supportService.supportRequests
@@ -61,6 +64,13 @@ class OnSupportRequestApplyCommandImpl implements OnSupportRequestApplyCommand {
             request: translations.admin.cards.support_request.card(
               chatId: currentRequest.chatId,
               dateCreated: currentRequest.dateCreated.dateFormatted,
+              status: _requestStatus(currentRequest.status),
+              admin: currentRequest.adminId != null
+                  ? translations.admin.cards.support_request.admin(
+                      adminUsername: currentRequest.adminUsername ?? 'null',
+                      adminId: currentRequest.adminId ?? 'null',
+                    )
+                  : translations.admin.cards.support_request.no_admin,
               message: currentRequest.message ??
                   translations.admin.cards.support_request.no_message,
             ),
@@ -76,6 +86,13 @@ class OnSupportRequestApplyCommandImpl implements OnSupportRequestApplyCommand {
             request: translations.admin.cards.support_request.card(
               chatId: request.chatId,
               dateCreated: request.dateCreated.dateFormatted,
+              status: _requestStatus(request.status),
+              admin: request.adminId != null
+                  ? translations.admin.cards.support_request.admin(
+                      adminUsername: request.adminUsername ?? 'null',
+                      adminId: request.adminId ?? 'null',
+                    )
+                  : translations.admin.cards.support_request.no_admin,
               message: request.message ??
                   translations.admin.cards.support_request.no_message,
             ),
@@ -92,5 +109,14 @@ class OnSupportRequestApplyCommandImpl implements OnSupportRequestApplyCommand {
     } catch (error) {
       logger.e(error);
     }
+  }
+
+  String _requestStatus(SupportRequestStatus requestStatus) {
+    return switch (requestStatus) {
+      SupportRequestStatus.REQUEST =>
+        translations.admin.cards.support_request.status.request,
+      SupportRequestStatus.IN_PROGRESS =>
+        translations.admin.cards.support_request.status.in_progress,
+    };
   }
 }

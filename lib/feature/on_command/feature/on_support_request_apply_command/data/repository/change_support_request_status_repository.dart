@@ -5,6 +5,7 @@ abstract class ChangeSupportRequestStatusRepository {
   Future<SupportRequest?> call(
     int chatId, {
     required int adminId,
+    required String? adminUsername,
     required SupportRequestStatus status,
   });
 }

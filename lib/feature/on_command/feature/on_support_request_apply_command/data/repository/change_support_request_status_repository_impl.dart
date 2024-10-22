@@ -23,6 +23,7 @@ class ChangeSupportRequestStatusRepositoryImpl
   Future<SupportRequest?> call(
     int chatId, {
     required int adminId,
+    required String? adminUsername,
     required SupportRequestStatus status,
   }) async {
     try {
@@ -33,6 +34,7 @@ class ChangeSupportRequestStatusRepositoryImpl
       final SupportRequest requestWithStatus = request.copyWith(
         status: status,
         adminId: adminId,
+        adminUsername: adminUsername,
       );
 
       final String path = 'support_requests/$chatId';

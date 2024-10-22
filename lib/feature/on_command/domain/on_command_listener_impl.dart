@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/feature/on_command/feature/on_support_request_apply_command/domain/on_support_request_apply_command.dart';
+import 'package:fakelab_records_bot/feature/on_command/feature/on_support_request_complete_command/domain/on_support_request_complete_command.dart';
 
 import '../feature/on_orders_command/domain/on_orders_command.dart';
 import '../feature/on_support_command/domain/on_support_command.dart';
@@ -29,6 +30,7 @@ class OnCommandListenerImpl implements OnCommandListener {
   final OnSupportCommand onSupportCommand;
   final GetUserRepository getUserRepository;
   final OnSupportRequestApplyCommand onSupportRequestApplyCommand;
+  final OnSupportRequestCompleteCommand onSupportRequestCompleteCommand;
 
   OnCommandListenerImpl({
     required this.logger,
@@ -41,6 +43,7 @@ class OnCommandListenerImpl implements OnCommandListener {
     required this.onSupportCommand,
     required this.getUserRepository,
     required this.onSupportRequestApplyCommand,
+    required this.onSupportRequestCompleteCommand,
   });
 
   @override
@@ -68,6 +71,10 @@ Author: @$username (id$userId)''');
       }
 
       if (command.startsWith('/r')) {
+        if (command == Constants.supportRequestCompleteCommand) {
+          return onSupportRequestCompleteCommand(message);
+        }
+
         return onSupportRequestApplyCommand(message);
       }
 

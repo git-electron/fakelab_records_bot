@@ -6,6 +6,7 @@ class Constants {
   static const String orderCommand = '/order';
   static const String ordersCommand = '/orders';
   static const String supportCommand = '/support';
+  static const String supportRequestCompleteCommand = '/rcomplete';
 
   static const String parseMode = 'HTML';
 
