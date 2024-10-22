@@ -5,6 +5,7 @@ RUN dart pub global activate jaspr_cli
 
 # Resolve app dependencies.
 WORKDIR /app
+COPY . .
 COPY pubspec.* ./
 COPY slang.* ./
 RUN dart pub get
