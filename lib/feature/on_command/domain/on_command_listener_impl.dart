@@ -67,7 +67,9 @@ Author: @$username (id$userId)''');
         return;
       }
 
-      if (command.startsWith('/r')) {}
+      if (command.startsWith('/r')) {
+        return onSupportRequestApplyCommand(message);
+      }
 
       switch (command) {
         case Constants.startCommand:
