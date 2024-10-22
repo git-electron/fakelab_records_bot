@@ -1,8 +1,6 @@
 # Use latest stable channel SDK.
 FROM dart:stable AS sdk
 
-RUN dart pub global activate jaspr_cli
-
 # Resolve app dependencies.
 WORKDIR /app
 COPY . .
@@ -15,7 +13,7 @@ RUN dart run build_runner build --delete-conflicting-outputs
 # Copy app source code (except anything in .dockerignore) and AOT compile app.
 
 # COPY . .
-RUN dart pub global run jaspr_cli:jaspr build --verbose
+RUN dart compile exe bin/fakelab_records_bot.dart -o bin/fakelab_records_bot
 # RUN dart compile exe bin/fakelab_records_bot.dart -o bin/fakelab_records_bot
 
 # Build minimal serving image from AOT-compiled `/fakelab_records_bot`
