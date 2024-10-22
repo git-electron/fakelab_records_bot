@@ -54,14 +54,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  binary_codec:
-    dependency: transitive
-    description:
-      name: binary_codec
-      sha256: "368144225d749e1e33f2f4628d0c70bffff99b99b1d6c0777b039f8967365b07"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -198,14 +190,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.0+1"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      sha256: "706b5707578e0c1b4b7550f64078f0a0f19dec3f50a178ffae7006b0a9ca58fb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   csv:
     dependency: transitive
     description:
@@ -326,22 +310,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.3"
-  hotreloader:
-    dependency: transitive
-    description:
-      name: hotreloader
-      sha256: ed56fdc1f3a8ac924e717257621d09e9ec20e308ab6352a73a50a1d7a4d9158e
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.2.0"
-  html:
-    dependency: transitive
-    description:
-      name: html
-      sha256: "3a7812d5bcd2894edf53dfaf8cd640876cf6cef50a8f238745c8b8120ea74d3a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.15.4"
   http:
     dependency: transitive
     description:
@@ -398,22 +366,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  jaspr:
-    dependency: "direct main"
-    description:
-      name: jaspr
-      sha256: "6ddb237e29d70720d00a941ee3c0c252814ff32ea7f2e6cfcbb905784279c473"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.16.1"
-  jaspr_builder:
-    dependency: "direct dev"
-    description:
-      name: jaspr_builder
-      sha256: d37877ddbd1f8a2a3c1e68a71b65416b470f78621a40c1fb5052f9559174220b
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.16.1"
   jose:
     dependency: transitive
     description:
@@ -614,14 +566,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.2"
-  shelf_gzip:
-    dependency: transitive
-    description:
-      name: shelf_gzip
-      sha256: "4f4b793c0f969f348aece1ab4cc05fceba9fea431c1ce76b1bc0fa369cecfc15"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.1.0"
   shelf_packages_handler:
     dependency: transitive
     description:
@@ -630,14 +574,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
-  shelf_proxy:
-    dependency: transitive
-    description:
-      name: shelf_proxy
-      sha256: a71d2307f4393211930c590c3d2c00630f6c5a7a77edc1ef6436dfd85a6a7ee3
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.4"
   shelf_static:
     dependency: transitive
     description:
