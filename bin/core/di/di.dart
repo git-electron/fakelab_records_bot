@@ -5,8 +5,10 @@ import 'package:injectable/injectable.dart';
 
 import 'di.config.dart';
 
-
 final GetIt injector = GetIt.I;
 
-@injectableInit
+@InjectableInit(
+  generateForDir: ['bin'],
+  preferRelativeImports: true,
+)
 Future<GetIt> configureDependencies() async => injector.init();
