@@ -26,7 +26,7 @@ class Constants {
   static const String more = 'more';
 
   static const List<int> adminAccountIds = [
-    265685890, // @raimeeee
+    //265685890, // @raimeeee
     7452326346, // @fakelab_records_support
   ];
 }

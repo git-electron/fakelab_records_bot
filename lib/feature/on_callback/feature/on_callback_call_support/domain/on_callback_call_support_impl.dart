@@ -33,6 +33,8 @@ class OnCallbackCallSupportImpl implements OnCallbackCallSupport {
       if (message == null || message.from == null) return;
 
       final Chat chat = message.chat;
+      final String username = callback.from.username ?? '';
+      final int userId = callback.from.id;
 
       final SupportRequest? supportRequest =
           await createSuportRequestService(message.chat.id);
@@ -55,6 +57,20 @@ class OnCallbackCallSupportImpl implements OnCallbackCallSupport {
       }
 
       await teledart.answerCallbackQuery(callback.id);
+
+      await Future.forEach(
+        Constants.adminAccountIds,
+        (int adminAccountId) async {
+          await teledart.sendMessage(
+            adminAccountId,
+            translations.admin.support.new_request_text(
+              username: username,
+              userId: userId,
+            ),
+            parseMode: Constants.parseMode,
+          );
+        },
+      );
     } catch (error) {
       logger.e(error);
     }

@@ -29,6 +29,9 @@ class OnSupportRequestReceivedImpl implements OnSupportRequestReceived {
 
       if (message.from == null || text == null) return;
 
+      final String username = message.from!.username ?? '';
+      final int userId = message.from!.id;
+
       await addMessageToSupportRequestRepository(
         message.chat.id,
         message: text,
@@ -38,6 +41,20 @@ class OnSupportRequestReceivedImpl implements OnSupportRequestReceived {
         message.chat.id,
         translations.texts.support_request_message_sent_text,
         parseMode: Constants.parseMode,
+      );
+
+      await Future.forEach(
+        Constants.adminAccountIds,
+        (int adminAccountId) async {
+          await teledart.sendMessage(
+            adminAccountId,
+            translations.admin.support.request_edited_text(
+              username: username,
+              userId: userId,
+            ),
+            parseMode: Constants.parseMode,
+          );
+        },
       );
     } catch (error) {
       logger.e(error);

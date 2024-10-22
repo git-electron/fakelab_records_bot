@@ -89,5 +89,11 @@
     "october": "октября",
     "november": "ноября",
     "december": "декабря"
+  },
+  "admin": {
+    "support": {
+      "new_request_text": "⚠️ Новый вопрос от пользователя @{username} (id{userId})",
+      "request_edited_text": "✏️ Запрос пользователя @{username} (id{userId}) изменён"
+    }
   }
 }
