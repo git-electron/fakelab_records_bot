@@ -6,6 +6,7 @@ WORKDIR /app
 COPY . .
 COPY pubspec.* ./
 COPY slang.* ./
+COPY .env* ./
 RUN dart pub get
 RUN dart pub global activate dotenv
 RUN dart pub global run dotenv:new
