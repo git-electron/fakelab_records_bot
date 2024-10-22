@@ -24,4 +24,4 @@ COPY --from=sdk /app/bin/fakelab_records_bot /app/bin/
 
 # Start server.
 EXPOSE 8080
-CMD ["/app/bin/server"]
+CMD ["/app/bin/fakelab_records_bot"]
