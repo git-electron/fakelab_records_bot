@@ -5,8 +5,8 @@ import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;
 import 'package:teledart/teledart.dart';
 
-import '../../../../../../../core/domain/service/id_service.dart';
-import '../../../../../../../core/i18n/app_localization.g.dart';
+import '../../../../../core/domain/service/id_service.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/extensions/date_time_extensions.dart';
 import '../../../../../core/extensions/double_extensions.dart';

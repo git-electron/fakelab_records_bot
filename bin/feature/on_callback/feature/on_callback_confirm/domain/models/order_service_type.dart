@@ -1,16 +1,16 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:fakelab_records_bot/core/di/di.dart';
-import 'package:fakelab_records_bot/core/extensions/double_extensions.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
+import '../../../../../../core/extensions/double_extensions.dart';
 
-enum OrderType {
+import '../../../../../../core/di/di.dart';
+import '../../../../../../core/i18n/app_localization.g.dart';
+
+enum OrderServiceType {
   MIX(totalCost: 2500, costFrom: true),
   MASTERING(totalCost: 500, costFrom: false),
-  MIX_AND_MASTERING(totalCost: 3000, costFrom: true),
   BEAT(totalCost: 10000, costFrom: true);
 
-  const OrderType({
+  const OrderServiceType({
     required this.totalCost,
     required this.costFrom,
   });
