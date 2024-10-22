@@ -21,4 +21,4 @@ COPY --from=build /app/lib/fakelab_records_bot /app/lib/
 
 # Start server.
 EXPOSE 8080
-CMD ["/app/bin/fakelab_records_bot"]
+CMD ["/app/lib/fakelab_records_bot"]
