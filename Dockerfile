@@ -21,8 +21,8 @@ RUN dart pub global run jaspr_cli:jaspr build --verbose
 # and the pre-built AOT-runtime in the `/runtime/` directory of the base image.
 FROM scratch
 COPY --from=sdk /runtime/ /
-COPY --from=sdk /app/bin/fakelab_records_bot /app/bin/
+COPY --from=sdk /app/build/jaspr/ /app/
 
 # Start server.
 EXPOSE 8080
-CMD ["/app/bin/fakelab_records_bot"]
+CMD ["./app"]
