@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
 import 'package:fakelab_records_bot/feature/on_callback/domain/models/faq_markup.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
@@ -33,7 +34,7 @@ class OnCallbackFaqImpl implements OnCallbackFaq {
         translations.texts.faq_text,
         chatId: chat.id,
         messageId: message.messageId,
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: faqMarkup(),
         disableWebPagePreview: true,
       );

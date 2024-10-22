@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
 import 'package:fakelab_records_bot/core/extensions/double_extensions.dart';
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
@@ -51,7 +52,7 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
           ),
           chatId: chat.id,
           messageId: message.messageId,
-          parseMode: 'HTML',
+          parseMode: Constants.parseMode,
           disableWebPagePreview: true,
           replyMarkup: myOrdersMarkup(showMoreButton: false),
         );
@@ -65,7 +66,7 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
         ),
         chatId: chat.id,
         messageId: message.messageId,
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         disableWebPagePreview: true,
         replyMarkup: myOrdersMarkup(showMoreButton: showMoreButton),
       );

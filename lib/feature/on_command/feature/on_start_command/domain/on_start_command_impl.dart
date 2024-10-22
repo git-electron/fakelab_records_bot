@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../on_callback/domain/models/main_menu_markup.dart';
 import 'package:teledart/teledart.dart';
 
@@ -30,7 +32,7 @@ class OnStartCommandImpl implements OnStartCommand {
         translations.texts.main_menu_text(
           firstName: message.from?.firstName ?? translations.user,
         ),
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: mainMenuMarkup(),
       );
     } catch (error) {

@@ -17,19 +17,19 @@ class MainMenuMarkup {
     );
     final InlineKeyboardButton order = InlineKeyboardButton(
       text: translations.buttons.order,
-      callbackData: 'order',
+      callbackData: Constants.order,
     );
     final InlineKeyboardButton myOrders = InlineKeyboardButton(
       text: translations.buttons.my_orders,
-      callbackData: 'my_orders',
+      callbackData: Constants.myOrders,
     );
     final InlineKeyboardButton myBookings = InlineKeyboardButton(
       text: translations.buttons.my_bookings,
-      callbackData: 'my_bookings',
+      callbackData: Constants.myBookings,
     );
     final InlineKeyboardButton support = InlineKeyboardButton(
       text: translations.buttons.support,
-      callbackData: 'support',
+      callbackData: Constants.support,
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [

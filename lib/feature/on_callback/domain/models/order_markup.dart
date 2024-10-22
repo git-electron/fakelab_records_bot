@@ -16,23 +16,23 @@ class OrderMarkup {
     );
     final InlineKeyboardButton orderMix = InlineKeyboardButton(
       text: translations.buttons.order_mix,
-      callbackData: 'order_mix',
+      callbackData: Constants.orderMix,
     );
     final InlineKeyboardButton orderMastering = InlineKeyboardButton(
       text: translations.buttons.order_mastering,
-      callbackData: 'order_mastering',
+      callbackData: Constants.orderMastering,
     );
     final InlineKeyboardButton orderMixAndMastering = InlineKeyboardButton(
       text: translations.buttons.order_mix_and_mastering,
-      callbackData: 'order_mix_and_mastering',
+      callbackData: Constants.orderMixAndMastering,
     );
     final InlineKeyboardButton orderBeat = InlineKeyboardButton(
       text: translations.buttons.order_beat,
-      callbackData: 'order_beat',
+      callbackData: Constants.orderBeat,
     );
     final InlineKeyboardButton goBack = InlineKeyboardButton(
       text: translations.buttons.go_back,
-      callbackData: 'go_to:main_menu',
+      callbackData: '${Constants.goTo}:${Constants.mainMenu}',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [

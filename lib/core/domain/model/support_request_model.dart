@@ -8,6 +8,7 @@ class SupportRequest with _$SupportRequest {
 
   factory SupportRequest({
     required int chatId,
+    required DateTime dateCreated,
     String? message,
   }) = _SupportRequest;
 

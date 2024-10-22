@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
 import 'package:fakelab_records_bot/core/extensions/double_extensions.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_model.dart';
@@ -61,7 +62,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
           ),
           chatId: chat.id,
           messageId: message.messageId,
-          parseMode: 'HTML',
+          parseMode: Constants.parseMode,
         );
 
         Timer.periodic(const Duration(seconds: 1), (timer) async {
@@ -75,7 +76,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
             ),
             chatId: chat.id,
             messageId: message.messageId,
-            parseMode: 'HTML',
+            parseMode: Constants.parseMode,
           );
 
           if (secondsLeft <= 0) {
@@ -89,7 +90,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
           _orderCreatedText(order, initialSeconds),
           chatId: chat.id,
           messageId: message.messageId,
-          parseMode: 'HTML',
+          parseMode: Constants.parseMode,
         );
 
         Timer.periodic(const Duration(seconds: 1), (timer) async {
@@ -99,7 +100,7 @@ class OnConfirmOrderImpl implements OnConfirmOrder {
             _orderCreatedText(order, secondsLeft),
             chatId: chat.id,
             messageId: message.messageId,
-            parseMode: 'HTML',
+            parseMode: Constants.parseMode,
           );
 
           if (secondsLeft <= 0) {

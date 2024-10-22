@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../../on_callback/domain/models/main_menu_markup.dart';
 import 'on_menu_command.dart';
@@ -28,7 +30,7 @@ class OnMenuCommandImpl implements OnMenuCommand {
         translations.texts.main_menu_text(
           firstName: message.from?.firstName ?? translations.user,
         ),
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: mainMenuMarkup(),
       );
     } catch (error) {

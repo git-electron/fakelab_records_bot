@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../../on_callback/domain/models/order_markup.dart';
 import 'on_order_command.dart';
@@ -26,7 +28,7 @@ class OnOrderCommandImpl implements OnOrderCommand {
       await teledart.sendMessage(
         message.chat.id,
         translations.texts.order_text,
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: orderMarkup(),
       );
     } catch (error) {

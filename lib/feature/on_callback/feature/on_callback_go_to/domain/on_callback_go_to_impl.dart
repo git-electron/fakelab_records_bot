@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
 
 import '../../../../../core/i18n/app_localization.g.dart';
@@ -33,13 +34,13 @@ class OnCallbackGoToImpl implements OnCallbackGoTo {
       if (message == null || to == null) return;
 
       switch (to) {
-        case 'main_menu':
+        case Constants.mainMenu:
           onCallbackMainMenu(callback);
           break;
-        case 'order':
+        case Constants.order:
           onCallbackOrder(callback);
           break;
-        case 'support':
+        case Constants.support:
           onCallbackSupport(callback);
           break;
         default:

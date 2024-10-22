@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../domain/models/order_markup.dart';
 import 'on_callback_order.dart';
 import 'package:injectable/injectable.dart';
@@ -34,7 +36,7 @@ class OnCallbackOrderImpl implements OnCallbackOrder {
         translations.texts.order_text,
         chatId: chat.id,
         messageId: message.messageId,
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: orderMarkup(),
       );
       await teledart.answerCallbackQuery(callback.id);

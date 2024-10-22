@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
 import 'package:fakelab_records_bot/feature/on_callback/domain/models/call_support_markup.dart';
@@ -41,7 +42,7 @@ class OnCallbackCallSupportImpl implements OnCallbackCallSupport {
           translations.texts.support_already_called_text,
           chatId: chat.id,
           messageId: message.messageId,
-          parseMode: 'HTML',
+          parseMode: Constants.parseMode,
           replyMarkup: callSupportMarkup(),
         );
       } else {
@@ -49,7 +50,7 @@ class OnCallbackCallSupportImpl implements OnCallbackCallSupport {
           translations.texts.call_support_text,
           chatId: chat.id,
           messageId: message.messageId,
-          parseMode: 'HTML',
+          parseMode: Constants.parseMode,
         );
       }
 

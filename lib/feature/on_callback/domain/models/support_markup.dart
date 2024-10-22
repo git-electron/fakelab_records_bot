@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../core/i18n/app_localization.g.dart';
 import 'package:injectable/injectable.dart';
 import 'package:teledart/model.dart';
@@ -11,15 +13,15 @@ class SupportMarkup {
   InlineKeyboardMarkup call() {
     final InlineKeyboardButton faq = InlineKeyboardButton(
       text: translations.buttons.faq,
-      callbackData: 'faq',
+      callbackData: Constants.faq,
     );
     final InlineKeyboardButton callSupport = InlineKeyboardButton(
       text: translations.buttons.call_support,
-      callbackData: 'call_support',
+      callbackData: Constants.callSupport,
     );
     final InlineKeyboardButton goBack = InlineKeyboardButton(
       text: translations.buttons.go_back,
-      callbackData: 'go_to:main_menu',
+      callbackData: '${Constants.goTo}:${Constants.mainMenu}',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [

@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../domain/models/order_mastering_markup.dart';
 import '../../on_callback_confirm/domain/models/order_type.dart';
@@ -35,7 +37,7 @@ class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
         translations.texts.order_mastering_text(totalCost: totalCost),
         chatId: chat.id,
         messageId: message.messageId,
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: orderMasteringMarkup(),
       );
       await teledart.answerCallbackQuery(callback.id);

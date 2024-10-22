@@ -18,15 +18,17 @@ class CreateSuportRequestServiceImpl implements CreateSupportRequestService {
   });
 
   @override
-  Future<SupportRequest?> call(int userId) async {
+  Future<SupportRequest?> call(int chatId) async {
     try {
+      final DateTime now = DateTime.now();
       final SupportRequest supportRequest = SupportRequest(
-        chatId: userId,
+        chatId: chatId,
+        dateCreated: now,
         message: null,
       );
 
       final bool hasUserSupportRequest = supportService.supportRequests
-          .where((SupportRequest request) => request.chatId == userId)
+          .where((SupportRequest request) => request.chatId == chatId)
           .isNotEmpty;
 
       if (hasUserSupportRequest) {

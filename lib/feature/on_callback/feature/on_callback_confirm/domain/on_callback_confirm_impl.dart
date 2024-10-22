@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
 
 import '../../../../../core/i18n/app_localization.g.dart';
@@ -33,10 +34,10 @@ class OnCallbackConfirmImpl implements OnCallbackConfirm {
     try {
       onConfirmOrder(callback,
           orderType: switch (item) {
-            'order_mix' => OrderType.MIX,
-            'order_mastering' => OrderType.MASTERING,
-            'order_mix_and_mastering' => OrderType.MIX_AND_MASTERING,
-            'order_beat' => OrderType.BEAT,
+            Constants.orderMix => OrderType.MIX,
+            Constants.orderMastering => OrderType.MASTERING,
+            Constants.orderMixAndMastering => OrderType.MIX_AND_MASTERING,
+            Constants.orderBeat => OrderType.BEAT,
             _ => throw Exception()
           });
     } catch (error) {

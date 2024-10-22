@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../../core/i18n/app_localization.g.dart';
 import '../../../domain/models/main_menu_markup.dart';
 import 'on_callback_main_menu.dart';
@@ -33,7 +35,7 @@ class OnCallbackMainMenuImpl implements OnCallbackMainMenu {
         translations.texts.main_menu_text(firstName: callback.from.firstName),
         chatId: chat.id,
         messageId: message.messageId,
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: mainMenuMarkup(),
       );
       await teledart.answerCallbackQuery(callback.id);

@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../core/i18n/app_localization.g.dart';
 import 'package:injectable/injectable.dart';
 import 'package:teledart/model.dart';
@@ -13,11 +15,11 @@ class MyOrdersMarkup {
   }) {
     final InlineKeyboardButton goBack = InlineKeyboardButton(
       text: translations.buttons.go_back,
-      callbackData: 'go_to:main_menu',
+      callbackData: '${Constants.goTo}:${Constants.mainMenu}',
     );
     final InlineKeyboardButton showMore = InlineKeyboardButton(
       text: translations.buttons.show_more,
-      callbackData: 'my_orders:more',
+      callbackData: '${Constants.myOrders}:${Constants.more}',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [

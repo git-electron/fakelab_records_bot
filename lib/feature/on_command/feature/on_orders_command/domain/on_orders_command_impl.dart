@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
 import 'package:fakelab_records_bot/core/extensions/double_extensions.dart';
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
@@ -45,7 +46,7 @@ class OnOrdersCommandImpl implements OnOrdersCommand {
           translations.texts.my_orders_text(
             orders: translations.errors.orders_empty,
           ),
-          parseMode: 'HTML',
+          parseMode: Constants.parseMode,
           disableWebPagePreview: true,
           replyMarkup: myOrdersMarkup(showMoreButton: false),
         );
@@ -57,7 +58,7 @@ class OnOrdersCommandImpl implements OnOrdersCommand {
         translations.texts.my_orders_text(
           orders: _orders(orders),
         ),
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         disableWebPagePreview: true,
         replyMarkup: myOrdersMarkup(showMoreButton: true),
       );

@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
+
 import '../../../../core/i18n/app_localization.g.dart';
 import 'package:injectable/injectable.dart';
 import 'package:teledart/model.dart';
@@ -11,11 +13,11 @@ class OrderMasteringMarkup {
   InlineKeyboardMarkup call() {
     final InlineKeyboardButton confirm = InlineKeyboardButton(
       text: translations.buttons.confirm,
-      callbackData: 'confirm:order_mastering',
+      callbackData: '${Constants.confirm}:${Constants.orderMastering}',
     );
     final InlineKeyboardButton cancel = InlineKeyboardButton(
       text: translations.buttons.cancel,
-      callbackData: 'go_to:order',
+      callbackData: '${Constants.goTo}:${Constants.order}',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [

@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/on_callback_call_support.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
@@ -66,40 +67,40 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
 
     try {
       switch (callbackAction) {
-        case 'order':
+        case Constants.order:
           onCallbackOrder(callback);
           break;
-        case 'order_mix':
+        case Constants.orderMix:
           onCallbackOrderMix(callback);
           break;
-        case 'order_mastering':
+        case Constants.orderMastering:
           onCallbackOrderMastering(callback);
           break;
-        case 'order_mix_and_mastering':
+        case Constants.orderMixAndMastering:
           onCallbackOrderMixAndMastering(callback);
           break;
-        case 'order_beat':
+        case Constants.orderBeat:
           onCallbackOrderBeat(callback);
           break;
-        case 'go_to':
+        case Constants.goTo:
           onCallbackGoTo(callback);
           break;
-        case 'confirm':
+        case Constants.confirm:
           onCallbackConfirm(callback);
           break;
-        case 'my_orders':
+        case Constants.myOrders:
           onCallbackMyOrders(
             callback,
-            showMoreButton: callbackData.split(':').last != 'more',
+            showMoreButton: callbackData.split(':').last != Constants.more,
           );
           break;
-        case 'support':
+        case Constants.support:
           onCallbackSupport(callback);
           break;
-        case 'faq':
+        case Constants.faq:
           onCallbackFaq(callback);
           break;
-        case 'call_support':
+        case Constants.callSupport:
           onCallbackCallSupport(callback);
           break;
         default:

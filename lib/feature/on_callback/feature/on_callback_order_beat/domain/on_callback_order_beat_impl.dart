@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/constants/constants.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
 
 import '../../../../../core/i18n/app_localization.g.dart';
@@ -36,7 +37,7 @@ class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
         translations.texts.order_beat_text(totalCost: totalCost),
         chatId: chat.id,
         messageId: message.messageId,
-        parseMode: 'HTML',
+        parseMode: Constants.parseMode,
         replyMarkup: orderBeatMarkup(),
       );
       await teledart.answerCallbackQuery(callback.id);

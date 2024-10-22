@@ -94,7 +94,7 @@ Author: @$username (id$userId)''');
       translations.texts.start_command_text_unregistered(
         firstName: message.from?.firstName ?? translations.user,
       ),
-      parseMode: 'HTML',
+      parseMode: Constants.parseMode,
       replyMarkup: _replyMarkupUnregistered,
     );
   }
