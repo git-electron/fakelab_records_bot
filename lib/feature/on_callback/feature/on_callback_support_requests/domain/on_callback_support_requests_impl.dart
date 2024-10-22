@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/domain/model/support_request_status.dart';
+
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/domain/model/support_request_model.dart';
 import '../../../../../core/domain/service/support_service.dart';
@@ -53,7 +55,12 @@ class OnCallbackSupportRequestsImpl implements OnCallbackSupportRequests {
   }
 
   String get _requests {
-    final List<SupportRequest> requests = supportService.supportRequests;
+    final List<SupportRequest> requests = supportService.supportRequests
+        .where((SupportRequest request) =>
+            request.status == SupportRequestStatus.REQUEST)
+        .toList();
+
+    if (requests.isEmpty) return translations.admin.errors.requests_empty;
 
     return requests.map((SupportRequest request) {
       return translations.admin.cards.support_request.card(

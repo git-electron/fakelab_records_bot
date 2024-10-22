@@ -111,6 +111,9 @@
         "no_message": "Нет сообщения",
         "card": "<b>/r{chatId}</b>  •  {dateCreated}\n«{message}»"
       }
+    },
+    "errors": {
+      "requests_empty": "\n<i>⚠️ Список запросов пуст.</i>\n"
     }
   }
 }
