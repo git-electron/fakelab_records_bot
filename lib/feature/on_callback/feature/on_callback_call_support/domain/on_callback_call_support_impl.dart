@@ -63,7 +63,7 @@ class OnCallbackCallSupportImpl implements OnCallbackCallSupport {
         (int adminAccountId) async {
           await teledart.sendMessage(
             adminAccountId,
-            translations.admin.texts.new_request_text(
+            translations.admin.notifications.new_request_text(
               username: username,
               userId: userId,
             ),

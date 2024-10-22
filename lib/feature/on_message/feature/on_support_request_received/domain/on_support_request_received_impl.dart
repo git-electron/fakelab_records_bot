@@ -48,7 +48,7 @@ class OnSupportRequestReceivedImpl implements OnSupportRequestReceived {
         (int adminAccountId) async {
           await teledart.sendMessage(
             adminAccountId,
-            translations.admin.texts.request_edited_text(
+            translations.admin.notifications.request_edited_text(
               username: username,
               userId: userId,
             ),

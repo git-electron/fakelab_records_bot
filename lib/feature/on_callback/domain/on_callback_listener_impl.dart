@@ -4,6 +4,7 @@ import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support_requests/domain/on_callback_support_requests.dart';
 
 import '../../../core/i18n/app_localization.g.dart';
 import '../feature/on_callback_confirm/domain/on_callback_confirm.dart';
@@ -35,6 +36,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final OnCallbackAdminAccess onCallbackAdminAccess;
   final OnCallbackCallSupport onCallbackCallSupport;
   final OnCallbackOrderMastering onCallbackOrderMastering;
+  final OnCallbackSupportRequests onCallbackSupportRequests;
   final OnCallbackOrderMixAndMastering onCallbackOrderMixAndMastering;
 
   OnCallbackListenerImpl({
@@ -52,6 +54,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.onCallbackAdminAccess,
     required this.onCallbackCallSupport,
     required this.onCallbackOrderMastering,
+    required this.onCallbackSupportRequests,
     required this.onCallbackOrderMixAndMastering,
   });
 
@@ -108,6 +111,9 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
           break;
         case Constants.adminAccess:
           onCallbackAdminAccess(callback);
+          break;
+        case Constants.supportRequests:
+          onCallbackSupportRequests(callback);
           break;
         default:
           await teledart.answerCallbackQuery(

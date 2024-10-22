@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
+import 'package:fakelab_records_bot/core/domain/model/support_request_status.dart';
 import 'package:fakelab_records_bot/core/domain/service/support_service.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/data/create_support_request_repository.dart';
 import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/service/create_suport_request_service.dart';
@@ -24,6 +25,7 @@ class CreateSuportRequestServiceImpl implements CreateSupportRequestService {
       final SupportRequest supportRequest = SupportRequest(
         chatId: chatId,
         dateCreated: now,
+        status: SupportRequestStatus.REQUEST,
         message: null,
       );
 

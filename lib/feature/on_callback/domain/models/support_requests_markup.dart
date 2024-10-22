@@ -5,23 +5,18 @@ import 'package:injectable/injectable.dart';
 import 'package:teledart/model.dart';
 
 @singleton
-class AdminAccessMarkup {
+class SupportRequestsMarkup {
   final Translations translations;
 
-  AdminAccessMarkup({required this.translations});
+  SupportRequestsMarkup({required this.translations});
 
   InlineKeyboardMarkup call() {
-    final InlineKeyboardButton supportRequests = InlineKeyboardButton(
-      text: translations.admin.buttons.support_requests,
-      callbackData: Constants.supportRequests,
-    );
     final InlineKeyboardButton goBack = InlineKeyboardButton(
       text: translations.buttons.go_back,
-      callbackData: '${Constants.goTo}:${Constants.mainMenu}',
+      callbackData: '${Constants.goTo}:${Constants.adminAccess}',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
-      [supportRequests],
       [goBack],
     ];
 
