@@ -9,7 +9,7 @@ import 'feature/on_callback/on_callback.dart';
 import 'feature/on_command/on_command.dart';
 import 'feature/on_message/on_message.dart';
 
-Future<void> configure() async {
+Future<void> main() async {
   FirebaseDart.setup();
   await configureDependencies();
 
