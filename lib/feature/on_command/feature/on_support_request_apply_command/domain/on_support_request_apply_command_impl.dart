@@ -82,6 +82,12 @@ class OnSupportRequestApplyCommandImpl implements OnSupportRequestApplyCommand {
           ),
           parseMode: Constants.parseMode,
         );
+
+        await teledart.sendMessage(
+          request.chatId,
+          translations.texts.administrator_connected_text,
+          parseMode: Constants.parseMode,
+        );
       }
     } catch (error) {
       logger.e(error);
