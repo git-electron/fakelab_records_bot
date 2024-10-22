@@ -7,6 +7,8 @@ COPY . .
 COPY pubspec.* ./
 COPY slang.* ./
 RUN dart pub get
+RUN dart pub global activate dotenv
+RUN dart pub global run dotenv
 RUN dart run slang
 RUN dart run build_runner build --delete-conflicting-outputs
 
