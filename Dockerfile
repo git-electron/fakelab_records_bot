@@ -17,7 +17,7 @@ RUN dart compile exe bin/fakelab_records_bot.dart -o bin/fakelab_records_bot
 # and the pre-built AOT-runtime in the `/runtime/` directory of the base image.
 FROM scratch
 COPY --from=build /runtime/ /
-COPY --from=build /app/bin/fakelab_records_bot /app/bin/
+COPY --from=build /app/bin/fakelab_records_bot /app/bin/ /app/lib/
 
 # Start server.
 EXPOSE 8080
