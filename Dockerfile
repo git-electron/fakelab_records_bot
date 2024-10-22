@@ -24,7 +24,7 @@ RUN dart compile exe bin/fakelab_records_bot.dart -o bin/fakelab_records_bot
 FROM scratch
 COPY --from=sdk /runtime/ /
 COPY --from=sdk /app/bin/fakelab_records_bot /app/bin/
-COPY --from=sdk /app/.env /app/bin/.env
+COPY --from=sdk /app/.env /
 
 # Start server.
 EXPOSE 8080
