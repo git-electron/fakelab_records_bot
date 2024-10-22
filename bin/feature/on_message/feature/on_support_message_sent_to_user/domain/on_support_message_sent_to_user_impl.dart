@@ -49,11 +49,11 @@ class OnSupportMessageSentToUserImpl implements OnSupportMessageSentToUser {
         message.text!,
         entities: message.entities,
       );
-      await teledart.setMessageReaction(
-        message.chat.id,
-        messageId: message.messageId,
-        reaction: '✍',
-      );
+      // await teledart.setMessageReaction(
+      //   message.chat.id,
+      //   messageId: message.messageId,
+      //   reaction: '✍',
+      // ); //TODO
     } catch (error) {
       logger.e(error);
     }
