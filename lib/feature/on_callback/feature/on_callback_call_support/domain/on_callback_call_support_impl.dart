@@ -1,9 +1,9 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/call_support_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/on_callback_call_support.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/service/create_suport_request_service.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/domain/model/support_request_model.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../domain/models/call_support_markup.dart';
+import 'on_callback_call_support.dart';
+import 'service/create_suport_request_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';

@@ -1,5 +1,5 @@
-import 'package:fakelab_records_bot/core/domain/model/user_model.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_filters_model.dart';
+import '../../../../../../core/domain/model/user_model.dart';
+import 'order_filters_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'order_service_model.dart';

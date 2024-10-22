@@ -1,10 +1,10 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_admin_access/domain/on_callback_admin_access.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/domain/on_callback_call_support.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support_requests/domain/on_callback_support_requests.dart';
+import '../../../core/constants/constants.dart';
+import '../feature/on_callback_admin_access/domain/on_callback_admin_access.dart';
+import '../feature/on_callback_call_support/domain/on_callback_call_support.dart';
+import '../feature/on_callback_faq/domain/on_callback_faq.dart';
+import '../feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
+import '../feature/on_callback_support/domain/on_callback_support.dart';
+import '../feature/on_callback_support_requests/domain/on_callback_support_requests.dart';
 
 import '../../../core/i18n/app_localization.g.dart';
 import '../feature/on_callback_confirm/domain/on_callback_confirm.dart';

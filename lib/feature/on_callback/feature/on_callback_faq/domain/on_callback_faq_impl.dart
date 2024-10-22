@@ -1,11 +1,12 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/faq_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_faq/domain/on_callback_faq.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../domain/models/faq_markup.dart';
+import 'on_callback_faq.dart';
 
 @Singleton(as: OnCallbackFaq)
 class OnCallbackFaqImpl implements OnCallbackFaq {

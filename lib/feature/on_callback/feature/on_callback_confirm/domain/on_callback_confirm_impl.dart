@@ -1,5 +1,5 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
+import '../../../../../core/constants/constants.dart';
+import 'models/order_type.dart';
 
 import '../../../../../core/i18n/app_localization.g.dart';
 import 'on_callback_confirm.dart';

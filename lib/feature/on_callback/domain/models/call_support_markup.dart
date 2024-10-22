@@ -1,8 +1,8 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-
-import '../../../../core/i18n/app_localization.g.dart';
 import 'package:injectable/injectable.dart';
 import 'package:teledart/model.dart';
+
+import '../../../../core/constants/constants.dart';
+import '../../../../core/i18n/app_localization.g.dart';
 
 @singleton
 class CallSupportMarkup {

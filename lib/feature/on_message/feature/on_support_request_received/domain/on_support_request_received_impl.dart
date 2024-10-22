@@ -1,7 +1,7 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_message/feature/on_support_request_received/data/add_message_to_support_request_repository.dart';
-import 'package:fakelab_records_bot/feature/on_message/feature/on_support_request_received/domain/on_support_request_received.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../data/add_message_to_support_request_repository.dart';
+import 'on_support_request_received.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';

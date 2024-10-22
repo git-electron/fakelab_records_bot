@@ -1,5 +1,6 @@
-import 'order_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'order_status.dart';
 
 part 'order_status_history_item_model.freezed.dart';
 part 'order_status_history_item_model.g.dart';

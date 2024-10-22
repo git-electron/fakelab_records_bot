@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 
 import '../../../domain/models/order_markup.dart';
 import 'on_callback_order.dart';

@@ -1,9 +1,9 @@
-import 'create_user_repository.dart';
 import 'package:firebase_dart/database.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
 import '../../../../../../core/domain/model/user_model.dart';
+import 'create_user_repository.dart';
 
 @Singleton(as: CreateUserRepository)
 class CreateUserRepositoryImpl implements CreateUserRepository {

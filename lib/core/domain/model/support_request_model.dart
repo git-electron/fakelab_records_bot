@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/core/domain/model/support_request_status.dart';
+import 'support_request_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'support_request_model.freezed.dart';

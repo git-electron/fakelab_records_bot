@@ -1,11 +1,12 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/support_markup.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_support_command/domain/on_support_command.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../../on_callback/domain/models/support_markup.dart';
+import 'on_support_command.dart';
 
 @Singleton(as: OnSupportCommand)
 class OnSupportCommandImpl implements OnSupportCommand {

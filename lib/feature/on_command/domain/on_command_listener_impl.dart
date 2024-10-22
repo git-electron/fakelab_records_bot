@@ -1,5 +1,5 @@
-import 'package:fakelab_records_bot/feature/on_command/feature/on_orders_command/domain/on_orders_command.dart';
-import 'package:fakelab_records_bot/feature/on_command/feature/on_support_command/domain/on_support_command.dart';
+import '../feature/on_orders_command/domain/on_orders_command.dart';
+import '../feature/on_support_command/domain/on_support_command.dart';
 
 import '../../../core/domain/model/user_model.dart';
 import '../../../core/i18n/app_localization.g.dart';

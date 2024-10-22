@@ -1,5 +1,6 @@
-import 'id_service.dart';
 import 'package:injectable/injectable.dart';
+
+import 'id_service.dart';
 
 @Singleton(as: IdService)
 class IdServiceImpl implements IdService {

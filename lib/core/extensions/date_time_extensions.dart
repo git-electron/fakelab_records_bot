@@ -1,5 +1,5 @@
-import 'package:fakelab_records_bot/core/di/di.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
+import '../di/di.dart';
+import '../i18n/app_localization.g.dart';
 
 extension DateTimeExtensions on DateTime {
   String get dayFormatted {

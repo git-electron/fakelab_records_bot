@@ -1,9 +1,9 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
-import 'package:fakelab_records_bot/core/extensions/double_extensions.dart';
-import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
-import 'package:fakelab_records_bot/feature/on_callback/domain/models/my_orders_markup.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/service/get_user_orders_service.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/extensions/date_time_extensions.dart';
+import '../../../../../core/extensions/double_extensions.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../../on_callback/domain/models/my_orders_markup.dart';
+import '../../../../on_callback/feature/on_callback_my_orders/domain/service/get_user_orders_service.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';

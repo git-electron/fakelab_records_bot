@@ -1,6 +1,6 @@
-import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
-import 'package:fakelab_records_bot/core/domain/service/support_service.dart';
-import 'package:fakelab_records_bot/feature/on_message/feature/on_support_request_received/data/add_message_to_support_request_repository.dart';
+import '../../../../../core/domain/model/support_request_model.dart';
+import '../../../../../core/domain/service/support_service.dart';
+import 'add_message_to_support_request_repository.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';

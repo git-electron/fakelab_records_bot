@@ -1,6 +1,6 @@
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/data/get_user_request_order_repository.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_status.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
+import 'get_user_request_order_repository.dart';
+import '../domain/models/order_status.dart';
+import '../domain/models/order_type.dart';
 import 'package:firebase_dart/database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';

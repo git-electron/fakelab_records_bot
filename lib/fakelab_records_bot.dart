@@ -1,13 +1,13 @@
 import 'dart:async';
 
+import 'package:firebase_dart/firebase_dart.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/teledart.dart';
-import 'package:firebase_dart/firebase_dart.dart';
+
+import 'core/di/di.dart';
 import 'feature/on_callback/on_callback.dart';
 import 'feature/on_command/on_command.dart';
 import 'feature/on_message/on_message.dart';
-
-import 'core/di/di.dart';
 
 Future<void> configure() async {
   FirebaseDart.setup();

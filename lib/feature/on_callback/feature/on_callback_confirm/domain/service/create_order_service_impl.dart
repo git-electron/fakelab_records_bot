@@ -1,10 +1,10 @@
-import 'package:fakelab_records_bot/core/domain/model/user_model.dart';
-import 'package:fakelab_records_bot/core/domain/service/id_service.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/data/create_order_repository.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/data/get_user_request_order_repository.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_model.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/service/create_order_service.dart';
-import 'package:fakelab_records_bot/feature/on_command/data/repository/get_user_repository.dart';
+import '../../../../../../core/domain/model/user_model.dart';
+import '../../../../../../core/domain/service/id_service.dart';
+import '../../data/create_order_repository.dart';
+import '../../data/get_user_request_order_repository.dart';
+import '../models/order_model.dart';
+import 'create_order_service.dart';
+import '../../../../../on_command/data/repository/get_user_repository.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 

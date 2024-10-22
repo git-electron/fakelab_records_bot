@@ -1,9 +1,9 @@
 import 'package:firebase_dart/database.dart';
-
-import 'create_order_repository.dart';
-import '../domain/models/order_model.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../domain/models/order_model.dart';
+import 'create_order_repository.dart';
 
 @Singleton(as: CreateOrderRepository)
 class CreateOrderRepositoryImpl implements CreateOrderRepository {

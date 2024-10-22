@@ -1,5 +1,5 @@
-import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_call_support/data/create_support_request_repository.dart';
+import '../../../../../core/domain/model/support_request_model.dart';
+import 'create_support_request_repository.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';

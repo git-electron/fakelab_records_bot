@@ -1,6 +1,6 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_admin_access/domain/on_callback_admin_access.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_support/domain/on_callback_support.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../on_callback_admin_access/domain/on_callback_admin_access.dart';
+import '../../on_callback_support/domain/on_callback_support.dart';
 
 import '../../../../../core/i18n/app_localization.g.dart';
 import 'on_callback_go_to.dart';

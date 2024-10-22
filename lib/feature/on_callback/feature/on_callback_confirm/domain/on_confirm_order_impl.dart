@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
-import 'package:fakelab_records_bot/core/extensions/double_extensions.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_model.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/service/create_order_service.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/extensions/date_time_extensions.dart';
+import '../../../../../core/extensions/double_extensions.dart';
+import 'models/order_model.dart';
+import 'models/order_type.dart';
+import 'service/create_order_service.dart';
 
 import '../../../../../../../core/domain/service/id_service.dart';
 import '../../../../../../../core/i18n/app_localization.g.dart';

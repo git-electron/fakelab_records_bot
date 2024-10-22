@@ -1,8 +1,9 @@
-import 'package:fakelab_records_bot/core/domain/model/support_request_model.dart';
-import 'package:fakelab_records_bot/core/domain/service/support_service.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+
+import '../model/support_request_model.dart';
+import 'support_service.dart';
 
 @Singleton(as: SupportService)
 class SupportServiceImpl implements SupportService {

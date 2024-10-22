@@ -1,13 +1,13 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_type.dart';
-
-import '../../../../../core/i18n/app_localization.g.dart';
-import '../../../domain/models/order_beat_markup.dart';
-import 'on_callback_order_beat.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
+
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/i18n/app_localization.g.dart';
+import '../../../domain/models/order_beat_markup.dart';
+import '../../on_callback_confirm/domain/models/order_type.dart';
+import 'on_callback_order_beat.dart';
 
 @Singleton(as: OnCallbackOrderBeat)
 class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {

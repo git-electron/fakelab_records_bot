@@ -1,6 +1,6 @@
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_confirm/domain/models/order_model.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/data/repository/get_user_orders_repository.dart';
-import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_my_orders/domain/service/get_user_orders_service.dart';
+import '../../../on_callback_confirm/domain/models/order_model.dart';
+import '../../data/repository/get_user_orders_repository.dart';
+import 'get_user_orders_service.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 

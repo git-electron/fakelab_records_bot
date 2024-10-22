@@ -1,4 +1,4 @@
-import 'package:fakelab_records_bot/core/constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 
 import '../../../../on_callback/domain/models/main_menu_markup.dart';
 import 'package:teledart/teledart.dart';
