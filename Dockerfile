@@ -12,14 +12,14 @@ RUN dart run slang
 # Copy app source code (except anything in .dockerignore) and AOT compile app.
 COPY . .
 
-RUN dart compile exe lib/fakelab_records_bot.dart -o lib/
+RUN dart compile exe lib/fakelab_records_bot.dart -o lib/fakelab_records_bot
 
 # Build minimal serving image from AOT-compiled `/fakelab_records_bot`
 # and the pre-built AOT-runtime in the `/runtime/` directory of the base image.
 FROM scratch
 COPY --from=sdk /runtime/ /
-COPY --from=sdk /app/lib/
+COPY --from=sdk /app/lib/fakelab_records_bot /app/lib/
 
 # Start server.
 EXPOSE 8080
-CMD ["/app/lib/fakelab_records_bot"]
+CMD ["/app/lib/"]
