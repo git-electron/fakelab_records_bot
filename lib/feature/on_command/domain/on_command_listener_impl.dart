@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/feature/on_command/feature/on_support_request_apply_command/domain/on_support_request_apply_command.dart';
+
 import '../feature/on_orders_command/domain/on_orders_command.dart';
 import '../feature/on_support_command/domain/on_support_command.dart';
 
@@ -26,6 +28,7 @@ class OnCommandListenerImpl implements OnCommandListener {
   final OnOrdersCommand onOrdersCommand;
   final OnSupportCommand onSupportCommand;
   final GetUserRepository getUserRepository;
+  final OnSupportRequestApplyCommand onSupportRequestApplyCommand;
 
   OnCommandListenerImpl({
     required this.logger,
@@ -37,6 +40,7 @@ class OnCommandListenerImpl implements OnCommandListener {
     required this.onOrdersCommand,
     required this.onSupportCommand,
     required this.getUserRepository,
+    required this.onSupportRequestApplyCommand,
   });
 
   @override
@@ -62,6 +66,8 @@ Author: @$username (id$userId)''');
         await _sendUnregisteredMessage(message);
         return;
       }
+
+      if (command.startsWith('/r')) {}
 
       switch (command) {
         case Constants.startCommand:
