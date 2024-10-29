@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/feature/on_callback/feature/on_callback_admin_access/feature/on_callback_mailings/domain/on_callback_mailings.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
@@ -32,6 +33,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
   final OnCallbackSupport onCallbackSupport;
   final OnCallbackOrderMix onCallbackOrderMix;
   final OnCallbackMyOrders onCallbackMyOrders;
+  final OnCallbackMailings onCallbackMailings;
   final OnCallbackOrderBeat onCallbackOrderBeat;
   final OnCallbackAdminAccess onCallbackAdminAccess;
   final OnCallbackCallSupport onCallbackCallSupport;
@@ -50,6 +52,7 @@ class OnCallbackListenerImpl implements OnCallbackListener {
     required this.onCallbackSupport,
     required this.onCallbackOrderMix,
     required this.onCallbackMyOrders,
+    required this.onCallbackMailings,
     required this.onCallbackOrderBeat,
     required this.onCallbackAdminAccess,
     required this.onCallbackCallSupport,
@@ -114,6 +117,9 @@ Callback triggerer: @${callback.from.username} (id${callback.from.id})''');
           break;
         case Constants.supportRequests:
           onCallbackSupportRequests(callback);
+          break;
+        case Constants.mailings:
+          onCallbackMailings(callback);
           break;
         default:
           await teledart.answerCallbackQuery(
