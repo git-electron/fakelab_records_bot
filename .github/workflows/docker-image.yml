@@ -23,5 +23,5 @@ jobs:
             docker rm $(docker ps -a -q)
             docker build -t dart-server .
             docker run -it -d --restart=always -p 8080:8080 --name fakelab_records_bot dart-server
-            docker update --restart=alway fakelab_records_bot
+            docker update --restart=always fakelab_records_bot
             exit
