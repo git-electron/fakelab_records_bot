@@ -9,7 +9,12 @@ import 'feature/on_callback/on_callback.dart';
 import 'feature/on_command/on_command.dart';
 import 'feature/on_message/on_message.dart';
 
-Future<void> main() async {
+late final bool isDevelopment;
+
+Future<void> main(List<String> args) async {
+  final String? environment = args.elementAtOrNull(0);
+  isDevelopment = environment == '--development';
+
   FirebaseDart.setup();
   await configureDependencies();
 
@@ -20,9 +25,15 @@ Future<void> main() async {
 
   teledart.start();
 
-  injector<Logger>().i(
-    'Started as «Fakelab Records Bot»\nUrl: https://t.me/fakelab_records_bot',
-  );
+  if (isDevelopment) {
+    injector<Logger>().i(
+      'Started as «Fakelab Records DEV»\nUrl: https://t.me/fklb_rcrds_test_bot',
+    );
+  } else {
+    injector<Logger>().i(
+      'Started as «Fakelab Records Bot»\nUrl: https://t.me/fakelab_records_bot',
+    );
+  }
 
   teledart.onCommand().listen(injector<OnCommandListener>());
 

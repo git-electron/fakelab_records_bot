@@ -1,0 +1,2 @@
+cd fakelab_records_bot
+git pull
