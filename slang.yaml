@@ -1,8 +1,8 @@
 base_locale: ru
 fallback_strategy: base_locale
-input_directory: bin/core/i18n
+input_directory: lib/core/i18n
 input_file_pattern: .json
-output_directory: bin/core/i18n
+output_directory: lib/core/i18n
 output_file_name: app_localization.g.dart
 output_format: single_file
 string_interpolation: braces
