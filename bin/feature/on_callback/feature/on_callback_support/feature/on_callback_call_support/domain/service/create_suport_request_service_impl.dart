@@ -1,6 +1,6 @@
-import '../../../../../../core/domain/model/support_request_model.dart';
-import '../../../../../../core/domain/model/support_request_status.dart';
-import '../../../../../../core/domain/service/support_service.dart';
+import '../../../../../../../../core/domain/model/support_request_model.dart';
+import '../../../../../../../../core/domain/model/support_request_status.dart';
+import '../../../../../../../../core/domain/service/support_service.dart';
 import '../../data/create_support_request_repository.dart';
 import 'create_suport_request_service.dart';
 import 'package:injectable/injectable.dart';

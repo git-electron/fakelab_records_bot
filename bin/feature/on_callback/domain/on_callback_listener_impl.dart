@@ -6,18 +6,18 @@ import 'package:teledart/teledart.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/i18n/app_localization.g.dart';
 import '../feature/on_callback_admin_access/domain/on_callback_admin_access.dart';
-import '../feature/on_callback_call_support/domain/on_callback_call_support.dart';
+import '../feature/on_callback_support/feature/on_callback_call_support/domain/on_callback_call_support.dart';
 import '../feature/on_callback_confirm/domain/on_callback_confirm.dart';
-import '../feature/on_callback_faq/domain/on_callback_faq.dart';
+import '../feature/on_callback_support/feature/on_callback_faq/domain/on_callback_faq.dart';
 import '../feature/on_callback_go_to/domain/on_callback_go_to.dart';
 import '../feature/on_callback_my_orders/domain/on_callback_my_orders.dart';
 import '../feature/on_callback_order/domain/on_callback_order.dart';
-import '../feature/on_callback_order_beat/domain/on_callback_order_beat.dart';
-import '../feature/on_callback_order_mastering/domain/on_callback_order_mastering.dart';
-import '../feature/on_callback_order_mix/domain/on_callback_order_mix.dart';
-import '../feature/on_callback_order_mix_and_mastering/domain/on_callback_order_mix_and_mastering.dart';
+import '../feature/on_callback_order/feature/on_callback_order_beat/domain/on_callback_order_beat.dart';
+import '../feature/on_callback_order/feature/on_callback_order_mastering/domain/on_callback_order_mastering.dart';
+import '../feature/on_callback_order/feature/on_callback_order_mix/domain/on_callback_order_mix.dart';
+import '../feature/on_callback_order/feature/on_callback_order_mix_and_mastering/domain/on_callback_order_mix_and_mastering.dart';
 import '../feature/on_callback_support/domain/on_callback_support.dart';
-import '../feature/on_callback_support_requests/domain/on_callback_support_requests.dart';
+import '../feature/on_callback_admin_access/feature/on_callback_support_requests/domain/on_callback_support_requests.dart';
 import 'on_callback_listener.dart';
 
 @Singleton(as: OnCallbackListener)

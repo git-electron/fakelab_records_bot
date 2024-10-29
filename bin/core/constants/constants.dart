@@ -27,6 +27,8 @@ class Constants {
   static const String more = 'more';
   static const String adminAccess = 'admin_access';
   static const String supportRequests = 'support_requests';
+  static const String mailings = 'mailings';
+  static const String blacklist = 'blacklist';
 
   static const List<int> adminAccountIds = [
     //265685890, // @raimeeee

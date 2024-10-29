@@ -3,24 +3,24 @@ import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/i18n/app_localization.g.dart';
-import '../../../domain/models/order_mastering_markup.dart';
-import '../../on_callback_confirm/domain/models/order_type.dart';
-import 'on_callback_order_mastering.dart';
+import '../../../../../../../core/constants/constants.dart';
+import '../../../../../../../core/i18n/app_localization.g.dart';
+import '../../../../../domain/models/order_mix_markup.dart';
+import '../../../../on_callback_confirm/domain/models/order_type.dart';
+import 'on_callback_order_mix.dart';
 
-@Singleton(as: OnCallbackOrderMastering)
-class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
+@Singleton(as: OnCallbackOrderMix)
+class OnCallbackOrderMixImpl implements OnCallbackOrderMix {
   final Logger logger;
   final TeleDart teledart;
   final Translations translations;
-  final OrderMasteringMarkup orderMasteringMarkup;
+  final OrderMixMarkup orderMixMarkup;
 
-  OnCallbackOrderMasteringImpl({
+  OnCallbackOrderMixImpl({
     required this.logger,
     required this.teledart,
     required this.translations,
-    required this.orderMasteringMarkup,
+    required this.orderMixMarkup,
   });
 
   @override
@@ -31,14 +31,14 @@ class OnCallbackOrderMasteringImpl implements OnCallbackOrderMastering {
       if (message == null) return;
 
       final Chat chat = message.chat;
-      final String totalCost = OrderType.MASTERING.totalCostFormatted;
+      final String totalCost = OrderType.MIX.totalCostFormatted;
 
       await teledart.editMessageText(
-        translations.texts.order_mastering_text(totalCost: totalCost),
+        translations.texts.order_mix_text(totalCost: totalCost),
         chatId: chat.id,
         messageId: message.messageId,
         parseMode: Constants.parseMode,
-        replyMarkup: orderMasteringMarkup(),
+        replyMarkup: orderMixMarkup(),
       );
       await teledart.answerCallbackQuery(callback.id);
     } catch (error) {

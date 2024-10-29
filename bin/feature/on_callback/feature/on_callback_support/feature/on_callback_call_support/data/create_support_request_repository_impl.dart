@@ -1,4 +1,4 @@
-import '../../../../../core/domain/model/support_request_model.dart';
+import '../../../../../../../core/domain/model/support_request_model.dart';
 import 'create_support_request_repository.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:injectable/injectable.dart';

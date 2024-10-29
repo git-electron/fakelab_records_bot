@@ -3,24 +3,23 @@ import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/i18n/app_localization.g.dart';
-import '../../../domain/models/order_beat_markup.dart';
-import '../../on_callback_confirm/domain/models/order_type.dart';
-import 'on_callback_order_beat.dart';
+import '../../../../../../../core/constants/constants.dart';
+import '../../../../../../../core/i18n/app_localization.g.dart';
+import '../../../../../domain/models/faq_markup.dart';
+import 'on_callback_faq.dart';
 
-@Singleton(as: OnCallbackOrderBeat)
-class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
+@Singleton(as: OnCallbackFaq)
+class OnCallbackFaqImpl implements OnCallbackFaq {
   final Logger logger;
   final TeleDart teledart;
+  final FaqMarkup faqMarkup;
   final Translations translations;
-  final OrderBeatMarkup orderBeatMarkup;
 
-  OnCallbackOrderBeatImpl({
+  OnCallbackFaqImpl({
     required this.logger,
     required this.teledart,
+    required this.faqMarkup,
     required this.translations,
-    required this.orderBeatMarkup,
   });
 
   @override
@@ -31,14 +30,14 @@ class OnCallbackOrderBeatImpl implements OnCallbackOrderBeat {
       if (message == null) return;
 
       final Chat chat = message.chat;
-      final String totalCost = OrderType.BEAT.totalCostFormatted;
 
       await teledart.editMessageText(
-        translations.texts.order_beat_text(totalCost: totalCost),
+        translations.texts.faq_text,
         chatId: chat.id,
         messageId: message.messageId,
         parseMode: Constants.parseMode,
-        replyMarkup: orderBeatMarkup(),
+        replyMarkup: faqMarkup(callback.from.id),
+        disableWebPagePreview: true,
       );
       await teledart.answerCallbackQuery(callback.id);
     } catch (error) {

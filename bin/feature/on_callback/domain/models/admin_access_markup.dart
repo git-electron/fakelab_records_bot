@@ -15,13 +15,22 @@ class AdminAccessMarkup {
       text: translations.admin.buttons.support_requests,
       callbackData: Constants.supportRequests,
     );
+    final InlineKeyboardButton mailings = InlineKeyboardButton(
+      text: translations.admin.buttons.mailings,
+      callbackData: Constants.mailings,
+    );
+    final InlineKeyboardButton blacklist = InlineKeyboardButton(
+      text: translations.admin.buttons.blacklist,
+      callbackData: Constants.blacklist,
+    );
     final InlineKeyboardButton goBack = InlineKeyboardButton(
       text: translations.buttons.go_back,
       callbackData: '${Constants.goTo}:${Constants.mainMenu}',
     );
 
     final List<List<InlineKeyboardButton>> inlineKeyboard = [
-      [supportRequests],
+      [supportRequests, mailings],
+      [blacklist],
       [goBack],
     ];
 

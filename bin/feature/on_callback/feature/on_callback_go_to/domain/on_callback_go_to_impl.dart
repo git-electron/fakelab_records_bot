@@ -1,4 +1,4 @@
-import '../../on_callback_support_requests/domain/on_callback_support_requests.dart';
+import '../../on_callback_admin_access/feature/on_callback_support_requests/domain/on_callback_support_requests.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../on_callback_admin_access/domain/on_callback_admin_access.dart';
