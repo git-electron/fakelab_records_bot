@@ -1,4 +1,5 @@
 import 'package:fakelab_records_bot/core/domain/service/chats_service.dart';
+import 'package:fakelab_records_bot/feature/on_command/feature/on_send_command/domain/on_send_command.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;
@@ -24,6 +25,7 @@ class OnCommandListenerImpl implements OnCommandListener {
   final ChatsService chatsService;
   final Translations translations;
   final OnMenuCommand onMenuCommand;
+  final OnSendCommand onSendCommand;
   final OnStartCommand onStartCommand;
   final OnOrderCommand onOrderCommand;
   final OnOrdersCommand onOrdersCommand;
@@ -38,6 +40,7 @@ class OnCommandListenerImpl implements OnCommandListener {
     required this.chatsService,
     required this.translations,
     required this.onMenuCommand,
+    required this.onSendCommand,
     required this.onStartCommand,
     required this.onOrderCommand,
     required this.onOrdersCommand,
@@ -99,6 +102,9 @@ Author: @$username (id$userId)''');
           break;
         case Constants.supportCommand:
           onSupportCommand(message);
+          break;
+        case Constants.sendCommand:
+          onSendCommand(message);
           break;
         default:
           logger.w('Invalid command: $command');
