@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/domain/service/chats_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart' hide User;
@@ -20,6 +21,7 @@ import 'on_command_listener.dart';
 class OnCommandListenerImpl implements OnCommandListener {
   final Logger logger;
   final TeleDart teledart;
+  final ChatsService chatsService;
   final Translations translations;
   final OnMenuCommand onMenuCommand;
   final OnStartCommand onStartCommand;
@@ -33,6 +35,7 @@ class OnCommandListenerImpl implements OnCommandListener {
   OnCommandListenerImpl({
     required this.logger,
     required this.teledart,
+    required this.chatsService,
     required this.translations,
     required this.onMenuCommand,
     required this.onStartCommand,
@@ -50,6 +53,11 @@ class OnCommandListenerImpl implements OnCommandListener {
       final String? command = message.text;
       final String? username = message.from?.username;
       final int? userId = message.from?.id;
+      final int chatId = message.chat.id;
+
+      final Set<int> chatsIds = chatsService.chatsIds;
+
+      if (!chatsIds.contains(chatId)) chatsService.addChat(chatId);
 
       logger.i('''Received a new command
 Command: $command

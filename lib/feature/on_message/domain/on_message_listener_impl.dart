@@ -1,3 +1,5 @@
+import 'package:fakelab_records_bot/core/domain/service/chats_service.dart';
+
 import '../../../../core/domain/model/support_request_status.dart';
 import '../feature/on_support_message_sent_to_admin/domain/on_support_message_sent_to_admin.dart';
 import '../feature/on_support_message_sent_to_user/domain/on_support_message_sent_to_user.dart';
@@ -15,6 +17,7 @@ import 'on_message_listener.dart';
 @Singleton(as: OnMessageListener)
 class OnMessageListenerImpl implements OnMessageListener {
   final Logger logger;
+  final ChatsService chatsService;
   final SupportService supportService;
   final OnContactReceived onContactReceived;
   final OnSupportRequestReceived onSupportRequestReceived;
@@ -23,6 +26,7 @@ class OnMessageListenerImpl implements OnMessageListener {
 
   OnMessageListenerImpl({
     required this.logger,
+    required this.chatsService,
     required this.supportService,
     required this.onContactReceived,
     required this.onSupportRequestReceived,
@@ -32,6 +36,12 @@ class OnMessageListenerImpl implements OnMessageListener {
 
   @override
   void call(TeleDartMessage message) {
+    final int chatId = message.chat.id;
+
+    final Set<int> chatsIds = chatsService.chatsIds;
+
+    if (!chatsIds.contains(chatId)) chatsService.addChat(chatId);
+
     try {
       if (message.contact != null) {
         final Contact contact = message.contact!;
