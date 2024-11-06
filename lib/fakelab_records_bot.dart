@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:fakelab_records_bot/core/constants/constants.dart';
+import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
+import 'package:fakelab_records_bot/core/extensions/duration_extensions.dart';
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
 import 'package:firebase_dart/firebase_dart.dart';
 import 'package:logger/logger.dart';
@@ -16,6 +18,8 @@ late final bool isDevelopment;
 Future<void> configure(List<String> args) async {
   final String? environment = args.elementAtOrNull(0);
   isDevelopment = environment == '--development';
+
+  final DateTime dateTimeStarted = DateTime.now();
 
   FirebaseDart.setup();
   await configureDependencies();
@@ -40,9 +44,21 @@ Future<void> configure(List<String> args) async {
   await Future.forEach(Constants.adminAccountIds, (int userId) async {
     await teledart.sendMessage(
       userId,
-      injector<Translations>().admin.texts.bot_reloaded_text,
+      injector<Translations>().admin.notifications.bot_reloaded_text,
+    );
+    await _sendUptimeInfo(
+      teledart: teledart,
+      dateTimeStarted: dateTimeStarted,
     );
   });
+
+  Timer.periodic(
+    const Duration(days: 1),
+    (Timer timer) async => _sendUptimeInfo(
+      teledart: teledart,
+      dateTimeStarted: dateTimeStarted,
+    ),
+  );
 
   injector<Logger>().i('Admins notified');
 
@@ -51,4 +67,22 @@ Future<void> configure(List<String> args) async {
   teledart.onMessage().listen(injector<OnMessageListener>());
 
   teledart.onCallbackQuery().listen(injector<OnCallbackListener>());
+}
+
+Future<void> _sendUptimeInfo({
+  required TeleDart teledart,
+  required DateTime dateTimeStarted,
+}) async {
+  await Future.forEach(Constants.adminAccountIds, (int userId) async {
+    final DateTime now = DateTime.now();
+    final String uptime = now.difference(dateTimeStarted).formatted;
+    await teledart.sendMessage(
+      userId,
+      injector<Translations>().admin.notifications.uptime_text(
+            reloadedDateTime: dateTimeStarted.formatted,
+            uptime: uptime,
+          ),
+      parseMode: Constants.parseMode,
+    );
+  });
 }

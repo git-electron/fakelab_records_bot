@@ -26,4 +26,13 @@ extension DateTimeExtensions on DateTime {
   }
 
   String get dateFormatted => '$dayFormatted $monthFormatted $year';
+
+  String get timeFormatted {
+    final String minuteFormatted = '${minute > 10 ? minute : '0$minute'}';
+    final String secondFormatted = '${second > 10 ? second : '0$second'}';
+
+    return '$hour:$minuteFormatted:$secondFormatted';
+  }
+
+  String get formatted => '$dateFormatted $timeFormatted';
 }
