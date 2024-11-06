@@ -18,7 +18,7 @@ jobs:
             cd fakelab_records_bot
             git pull
             docker stop $(docker ps -a -q)
-            docker container prune
+            docker container prune --force
             docker build -t dart-server .
             docker run -it -d --restart=always -p 8080:8080 --name fakelab_records_bot dart-server
             docker update --restart=always fakelab_records_bot
