@@ -79,7 +79,8 @@ Future<void> _sendUptimeInfo({
     await teledart.sendMessage(
       userId,
       injector<Translations>().admin.notifications.uptime_text(
-            reloadedDateTime: dateTimeStarted.formatted,
+            reloadedDateTime:
+                dateTimeStarted.toUtc().add(Duration(hours: 3)).formatted,
             uptime: uptime,
           ),
       parseMode: Constants.parseMode,
