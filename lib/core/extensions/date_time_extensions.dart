@@ -22,7 +22,7 @@ extension DateTimeExtensions on DateTime {
       translations.months.october,
       translations.months.november,
       translations.months.december,
-    ][month];
+    ][month - 1];
   }
 
   String get dateFormatted => '$dayFormatted $monthFormatted $year';
