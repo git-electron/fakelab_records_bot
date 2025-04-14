@@ -1,6 +1,6 @@
 name: fakelab_records_bot
 description: A sample command-line application.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/git-electron/fakelab_records_bot
 
 environment:

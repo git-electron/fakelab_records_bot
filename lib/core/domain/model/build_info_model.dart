@@ -19,5 +19,5 @@ class BuildInfoModel with _$BuildInfoModel {
       BuildInfoModel(version: pubspec.version?.canonicalizedVersion ?? '1.0.0');
 
   factory BuildInfoModel.retrieve() => BuildInfoModel.fromPubspec(
-      Pubspec.parse(File('pubspec.yaml').readAsStringSync()));
+      Pubspec.parse(File('./pubspec.yaml').readAsStringSync()));
 }
