@@ -8,20 +8,6 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:  
-    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
-      run: |
-        echo "The GitHub Action Secret will be masked:  "
-        echo ${{ secrets.VPS_IP }}
-        echo "Trick to echo GitHub Actions Secret:  "
-        echo ${{secrets.VPS_IP}} | sed 's/./& /g'
-        echo "The GitHub Action Secret will be masked:  "
-        echo ${{ secrets.VPS_USER }}
-        echo "Trick to echo GitHub Actions Secret:  "
-        echo ${{secrets.VPS_USER}} | sed 's/./& /g'
-        echo "The GitHub Action Secret will be masked:  "
-        echo ${{ secrets.VPS_PASSWORD }}
-        echo "Trick to echo GitHub Actions Secret:  "
-        echo ${{secrets.VPS_PASSWORD}} | sed 's/./& /g'
     - name: Build on VPS
       uses: appleboy/ssh-action@master
       with:
