@@ -1,3 +1,4 @@
+import 'package:fakelab_records_bot/core/domain/model/build_info_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:teledart/model.dart';
@@ -27,13 +28,14 @@ class OnCallbackAdminAccessImpl implements OnCallbackAdminAccess {
     try {
       final Message? message = callback.message;
       final bool isAdmin = Constants.adminAccountIds.contains(callback.from.id);
+      final BuildInfoModel buildInfo = BuildInfoModel.retrieve();
 
       if (message == null || !isAdmin) return;
 
       final Chat chat = message.chat;
 
       await teledart.editMessageText(
-        translations.admin.texts.admin_access_text,
+        translations.admin.texts.admin_access_text(version: buildInfo.version),
         chatId: chat.id,
         messageId: message.messageId,
         parseMode: Constants.parseMode,
