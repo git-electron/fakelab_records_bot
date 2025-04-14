@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:fakelab_records_bot/core/constants/constants.dart';
-import 'package:fakelab_records_bot/core/domain/model/build_info_model.dart';
 import 'package:fakelab_records_bot/core/extensions/date_time_extensions.dart';
 import 'package:fakelab_records_bot/core/extensions/duration_extensions.dart';
 import 'package:fakelab_records_bot/core/i18n/app_localization.g.dart';
@@ -15,6 +14,7 @@ import 'feature/on_command/on_command.dart';
 import 'feature/on_message/on_message.dart';
 
 late final bool isDevelopment;
+const String version = '1.0.0';
 
 Future<void> configure(List<String> args) async {
   final String? environment = args.elementAtOrNull(0);
@@ -32,10 +32,8 @@ Future<void> configure(List<String> args) async {
 
   teledart.start();
 
-  final BuildInfoModel buildInfo = BuildInfoModel.retrieve();
-
   injector<Logger>().i(
-    'Started as «Fakelab Records ${isDevelopment ? "DEV" : "Bot"} v${buildInfo.version}»\nUrl: https://t.me/fklb_rcrds_test_bot',
+    'Started as «Fakelab Records ${isDevelopment ? "DEV" : "Bot"} v$version»\nUrl: https://t.me/fklb_rcrds_test_bot',
   );
 
   await Future.forEach(Constants.adminAccountIds, (int userId) async {
@@ -44,11 +42,10 @@ Future<void> configure(List<String> args) async {
       injector<Translations>()
           .admin
           .notifications
-          .bot_reloaded_text(version: buildInfo.version),
+          .bot_reloaded_text(version: version),
     );
     await _sendUptimeInfo(
       teledart: teledart,
-      buildInfo: buildInfo,
       dateTimeStarted: dateTimeStarted,
     );
   });
@@ -57,7 +54,6 @@ Future<void> configure(List<String> args) async {
     const Duration(days: 1),
     (Timer timer) async => _sendUptimeInfo(
       teledart: teledart,
-      buildInfo: buildInfo,
       dateTimeStarted: dateTimeStarted,
     ),
   );
@@ -74,7 +70,6 @@ Future<void> configure(List<String> args) async {
 Future<void> _sendUptimeInfo({
   required TeleDart teledart,
   required DateTime dateTimeStarted,
-  required BuildInfoModel buildInfo,
 }) async {
   await Future.forEach(Constants.adminAccountIds, (int userId) async {
     final DateTime now = DateTime.now();
@@ -83,7 +78,7 @@ Future<void> _sendUptimeInfo({
       userId,
       injector<Translations>().admin.notifications.uptime_text(
             uptime: uptime,
-            version: buildInfo.version,
+            version: version,
             reloadedDateTime:
                 dateTimeStarted.toUtc().add(Duration(hours: 3)).formatted,
           ),

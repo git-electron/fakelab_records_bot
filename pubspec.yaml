@@ -1,6 +1,5 @@
 name: fakelab_records_bot
 description: A sample command-line application.
-version: 1.0.1
 repository: https://github.com/git-electron/fakelab_records_bot
 
 environment:
@@ -17,7 +16,6 @@ dependencies:
   teledart: ^0.6.1
   injectable: ^2.5.0
   firebase_dart: ^1.2.2
-  pubspec_parse: ^1.4.0
   json_annotation: ^4.9.0
   freezed_annotation: ^2.4.4
 
