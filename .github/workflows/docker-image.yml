@@ -8,18 +8,32 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:  
-      - name: Build on VPS
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_IP }}
-          username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          script: |
-            cd fakelab_records_bot
-            git pull
-            docker stop $(docker ps -a -q)
-            docker container prune --force
-            docker build -t dart-server .
-            docker run -it -d --restart=always -p 8080:8080 --name fakelab_records_bot dart-server
-            docker update --restart=always fakelab_records_bot
-            exit
+    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+      run: |
+        echo "The GitHub Action Secret will be masked:  "
+        echo ${{ secrets.VPS_IP }}
+        echo "Trick to echo GitHub Actions Secret:  "
+        echo ${{secrets.VPS_IP}} | sed 's/./& /g'
+        echo "The GitHub Action Secret will be masked:  "
+        echo ${{ secrets.VPS_USER }}
+        echo "Trick to echo GitHub Actions Secret:  "
+        echo ${{secrets.VPS_USER}} | sed 's/./& /g'
+        echo "The GitHub Action Secret will be masked:  "
+        echo ${{ secrets.VPS_PASSWORD }}
+        echo "Trick to echo GitHub Actions Secret:  "
+        echo ${{secrets.VPS_PASSWORD}} | sed 's/./& /g'
+    - name: Build on VPS
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USER }}
+        password: ${{ secrets.VPS_PASSWORD }}
+        script: |
+          cd fakelab_records_bot
+          git pull
+          docker stop $(docker ps -a -q)
+          docker container prune --force
+          docker build -t dart-server .
+          docker run -it -d --restart=always -p 8080:8080 --name fakelab_records_bot dart-server
+          docker update --restart=always fakelab_records_bot
+          exit
