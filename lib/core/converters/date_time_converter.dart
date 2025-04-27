@@ -6,9 +6,9 @@ class DateTimeConverter implements JsonConverter<DateTime, String> {
   static const _kTimezoneOffsetDuration = Duration(hours: 3);
 
   @override
-  DateTime fromJson(String json) => DateTime.parse(json);
+  DateTime fromJson(String json) =>
+      DateTime.parse(json).add(_kTimezoneOffsetDuration);
 
   @override
-  String toJson(DateTime data) =>
-      data.toUtc().add(_kTimezoneOffsetDuration).toIso8601String();
+  String toJson(DateTime data) => data.toUtc().toIso8601String();
 }
