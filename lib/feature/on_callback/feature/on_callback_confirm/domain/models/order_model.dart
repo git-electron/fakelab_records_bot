@@ -21,6 +21,7 @@ class Order with _$Order {
     required OrderStatus status,
     required List<OrderStatusHistoryItem> statusHistory,
     @DateTimeConverter() required DateTime dateCreated,
+    @DateTimeConverter() required DateTime dateChanged,
     required double totalCost,
     required bool costFrom,
     required List<OrderService> services,
