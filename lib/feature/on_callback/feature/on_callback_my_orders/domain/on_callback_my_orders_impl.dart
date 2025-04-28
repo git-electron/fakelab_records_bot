@@ -82,7 +82,7 @@ class OnCallbackMyOrdersImpl implements OnCallbackMyOrders {
         orderId: order.id.substring(order.id.length - 5),
         orderType: _orderType(order.type),
         status: _orderStatus(order.status),
-        dateCreated: order.dateCreated,
+        dateCreated: order.dateCreated.dateFormatted,
         totalCost: _totalCost(order.totalCost, costFrom: order.costFrom),
       );
     }).join('\n\n');
