@@ -1,6 +1,7 @@
 import 'package:fakelab_records_bot/core/converters/date_time_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../../../core/domain/model/user_model.dart';
 import 'order_filters_model.dart';
 import 'order_service_model.dart';
 import 'order_status.dart';
@@ -15,7 +16,7 @@ part 'order_model.g.dart';
 class Order with _$Order {
   factory Order({
     required String id,
-    required int customerId,
+    required User customer,
     required OrderType type,
     required OrderStatus status,
     required List<OrderStatusHistoryItem> statusHistory,
