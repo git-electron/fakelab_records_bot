@@ -53,7 +53,7 @@ class CreateOrderServiceImpl implements CreateOrderService {
 
       final Order order = Order(
         id: id,
-        customer: user,
+        customerId: user.id,
         type: orderType,
         status: OrderStatus.REQUEST,
         statusHistory: [
