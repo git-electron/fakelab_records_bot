@@ -63,6 +63,7 @@ class CreateOrderServiceImpl implements CreateOrderService {
           ),
         ],
         dateCreated: now,
+        dateChanged: now,
         totalCost: orderType.totalCost,
         costFrom: orderType.costFrom,
         services: _services(orderType),
